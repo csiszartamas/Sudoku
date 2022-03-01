@@ -1,0 +1,45 @@
+﻿<Window x:Class="Sudoku.Regmenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        Title="Regmenu" Height="450" Width="800">
+
+    <Grid x:Name="Regisztracios_felulet_Copy">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="510,120,0,0" Name="TB_tips" Text="Ez a név fog megjelenni az alkalmazásban!" VerticalAlignment="Top" Width="227" />
+
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,120,0,0" Name="TxtBlck_jatekosnev" Text="Játékos Név:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,160,0,0" Name="TxtBlck_email" Text="Email cím:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,200,0,0" Name="TxtBlck_password" Text="Password:" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,240,0,0" Name="TxtBlck_confirmpassword" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
+
+
+
+        <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_jatekosnev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_email" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_password" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,200,0,0"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_passwordconfirm" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
+
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
+        <Button x:Name="BT_registration" Content="Regisztráció" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_registration_Click"/>
+
+        <TextBlock Height="50" HorizontalAlignment="Left" Margin="299,304,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">
+            Megjegyzés: Ha már van profilja <LineBreak />
+            kérjük, kattintson a
+           <!--szövegblokk mint hiperlink-->
+            <TextBlock>
+                 <Hyperlink Click="BT_login_Click" FontSize="14" FontStyle="Normal">Bejelentkezés</Hyperlink>
+            </TextBlock> 
+            <!--textblokk vége hiperlinkként-->
+            gombra
+        </TextBlock>
+
+    </Grid>
+</Window>

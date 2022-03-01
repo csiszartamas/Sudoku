@@ -1,0 +1,140 @@
+﻿<Window x:Class="Sudoku.Sudoku_game"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        Title="Sudoku_game" Height="450" Width="800">
+    <Grid>
+        <Grid Margin="37,30,354,52" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- 1. sor Gombjai-->
+            <Button x:Name="negyzet_1_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_1_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 2. Sor Gombjai -->
+            <Button x:Name="negyzet_2_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_2_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 3. Sor Gombjai -->
+            <Button x:Name="negyzet_3_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_3_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 4. Sor Gombjai -->
+            <Button x:Name="negyzet_4_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_4_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="4" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 5. Sor Gombjai -->
+            <Button x:Name="negyzet_5_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_5_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 6. Sor Gombjai -->
+            <Button x:Name="negyzet_6_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_6_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="6" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 7. Sor Gombjai -->
+            <Button x:Name="negyzet_7_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_7_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="8" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 8. Sor Gombjai -->
+            <Button x:Name="negyzet_8_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_8_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+            <!-- 9. Sor Gombjai -->
+            <Button x:Name="negyzet_9_0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="1" Grid.Column="0" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="2" Grid.Column="1" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="3" Grid.Column="2" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="4" Grid.Column="4" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_4"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="5" Grid.Column="5" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="6" Grid.Column="6" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="7" Grid.Column="8" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="8" Grid.Column="9" Grid.RowSpan="1" />
+            <Button x:Name="negyzet_9_8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="10" Content="9" Grid.Column="10" Grid.RowSpan="1"/>
+
+            <!-- elválasztó vonalak -->
+            <Rectangle Grid.Column="3" Fill="BlueViolet" Grid.RowSpan="12"/>
+            <Rectangle Grid.Column="7" Fill="BlueViolet" Grid.RowSpan="12"/>
+            <Rectangle Grid.Row="3" Fill="BlueViolet" Grid.ColumnSpan="12"/>
+            <Rectangle Grid.Row="7" Fill="BlueViolet" Grid.ColumnSpan="12"/>
+        </Grid>
+        <Button x:Name="BT_ujjatek" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,30,0,0" VerticalAlignment="Top" Click="BT_ujjatek_Click"/>
+        <Label Content="Idő:" Margin="462,72,0,0"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46"></Label>
+
+        <TextBox x:Name="TB_ido" HorizontalAlignment="Left" Margin="509,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+
+    </Grid>
+</Window>
