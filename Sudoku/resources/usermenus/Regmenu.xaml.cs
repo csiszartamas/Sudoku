@@ -71,46 +71,63 @@ namespace Sudoku
                 string felhasznalonev = TB_felhasznalonev.Text;
                 string jatekosnev = TB_jatekosnev.Text;
                 string email = TB_email.Text;
-                string jelszo = PB_password.Password;
-                if (PB_password.Password.Length == 0)
+                string jelszo = PB_jelszo.Password;
+                if (PB_jelszo.Password.Length == 0)
                 {
                     errormessage.Text = "Adjon meg jelszavat!";
-                    PB_password.Focus();
+                    PB_jelszo.Focus();
                 }
-                else if (PB_passwordconfirm.Password.Length == 0)
+                else if (PB_jelszo.Password.Length == 0)
                 {
                     errormessage.Text = "Erősítse meg a jelszavát!";
-                    PB_passwordconfirm.Focus();
+                    PB_jelszomegerosites.Focus();
                 }
-                else if (PB_password.Password != PB_passwordconfirm.Password)
+                else if (PB_jelszo.Password != PB_jelszo.Password)
                 {
                     errormessage.Text = "Nem egyeznek a jelszavak! Erősítse meg újra!";
-                    PB_passwordconfirm.Focus();
+                    PB_jelszo.Focus();
                 }
-                else if (PB_password.Password.Length < 7)
+                else if (PB_jelszo.Password.Length < 7)
                 {
                     errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
-                    PB_password.Focus();
+                    PB_jelszo.Focus();
                 }
                 else
                 {
-                    errormessage.Text = "";
-                    try
+                    
+                    SqlConnection con = new SqlConnection(ConnectionString);
+                    con.Open();
+                    SqlDataAdapter sda = new SqlDataAdapter("Select count(felhasznalonev) from jatekos where felhasznalonev = '" + felhasznalonev + "'", con);
+                    DataTable datatable = new DataTable();
+                    sda.Fill(datatable);
+                    if (int.Parse(datatable.Rows[0][0].ToString()) >= 1)
                     {
-                        using (var con = new SqlConnection(ConnectionString))
+                        MessageBox.Show("Ilyen felhasználónév létezik már!");
+
+                    }
+                    else
+                    {
+
+                        try
                         {
-                            con.Open();
-                            new SqlCommand($"Insert into jatekos (felhasznalonev,jelszo,email,jatekosnev) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "')", con).ExecuteNonQuery();
+                            using (var c = new SqlConnection(ConnectionString))
+                            {
+                                c.Open();
+                                new SqlCommand($"Insert into jatekos (felhasznalonev,jelszo,email,jatekosnev,rangid,nyelvid) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "',null,null)", c).ExecuteNonQuery();
+
+                            }
+
+                            MessageBox.Show("Sikeres regisztráció!");
+                            new Logmenu().Show();
+                            Close();
                         }
-                        
-                        MessageBox.Show("Sikeres regisztráció!");
-                        new Logmenu().Show();
-                        Close();
+                        catch
+                        {
+                            MessageBox.Show("db error");
+                        }
                     }
-                    catch
-                    {
-                        MessageBox.Show("db error");
-                    }
+                    errormessage.Text = "";
+                    
                 }
             }
         }

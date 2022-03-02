@@ -16,16 +16,16 @@
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,120,0,0" Name="TxtBlck_jatekosnev" Text="Játékos Név:" VerticalAlignment="Top" Width="110" />
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,160,0,0" Name="TxtBlck_email" Text="Email cím:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,200,0,0" Name="TxtBlck_password" Text="Password:" VerticalAlignment="Top" Width="110"  />
-        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,240,0,0" Name="TxtBlck_confirmpassword" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,200,0,0" Name="TxtBlck_jelszo" Text="Jelszó:" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,240,0,0" Name="TxtBlck_jelszomegerosites" Text="Jelszó megerősítés:" VerticalAlignment="Top" Width="110" />
 
 
 
         <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
         <TextBox x:Name="TB_jatekosnev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
         <TextBox x:Name="TB_email" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <PasswordBox x:Name="PB_password" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,200,0,0"  VerticalAlignment="Top"/>
-        <PasswordBox x:Name="PB_passwordconfirm" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_jelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,200,0,0"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_jelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
 
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
         <Button x:Name="BT_registration" Content="Regisztráció" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_registration_Click"/>

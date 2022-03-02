@@ -50,29 +50,29 @@ namespace Sudoku
                 errormessage.Text = "Érvénytelen felhasználónév! (Minimum 4 karakter!)";
                 TB_felhasznalonev.Focus();
             }
-            else if (PB_password.Password.Length == 0)
+            else if (PB_jelszo.Password.Length == 0)
             {
                 errormessage.Text = "Adjon meg jelszavat!";
-                PB_password.Focus();
+                PB_jelszo.Focus();
             }
-            else if (PB_password.Password.Length <= 7)
+            else if (PB_jelszo.Password.Length <= 7)
             {
                 errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
-                PB_password.Focus();
+                PB_jelszo.Focus();
             }
             else
             {
                 string felhasznalonev = TB_felhasznalonev.Text;
-                string password = PB_password.Password;
+                string jelszo = PB_jelszo.Password;
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + felhasznalonev + "' and jelszo = '" + password + "'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + felhasznalonev + "' and jelszo = '" + jelszo + "'", con);
                 DataTable datatable = new DataTable();
                 sda.Fill(datatable);
                 if (datatable.Rows[0][0].ToString() == "1")
                 {
                     this.Hide();
-                    new Sudoku_game().Show();
+                    new Sudoku_game(felhasznalonev).Show();
                     Close();
                 }
                 else

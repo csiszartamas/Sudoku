@@ -55,15 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="resources\ingamemenus\Beallitasokmenu.xaml.cs">
+      <DependentUpon>Beallitasokmenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="resources\ingamemenus\Ranglistmenu.xaml.cs">
+      <DependentUpon>Ranglistmenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="resources\usermenus\Logmenu.xaml.cs">
       <DependentUpon>Logmenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="resources\usermenus\Regmenu.xaml.cs">
       <DependentUpon>Regmenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sudoku_game.xaml.cs">
+    <Compile Include="resources\ingamemenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
     </Compile>
+    <Page Include="resources\ingamemenus\Beallitasokmenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="resources\ingamemenus\Ranglistmenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="resources\usermenus\Logmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,7 +98,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sudoku_game.xaml">
+    <Page Include="resources\ingamemenus\Sudoku_game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,9 +129,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="resources\ingamemenus\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="resources\images\bg.jpg" />
   </ItemGroup>

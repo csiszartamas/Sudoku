@@ -1,0 +1,25 @@
+﻿<Window x:Class="Sudoku.Beallitasokmenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        Title="Beallitasokmenu" Height="450" Width="800">
+    <Grid Loaded="Grid_Loaded">
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,120,0,0" Name="TxtBlck_jatekosnev" Text="Játékos Név:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,160,0,0" Name="TxtBlck_jelszo" Text="Jelenlegi Jelszó:" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,200,0,0" Name="TxtBlck_ujjelszo" Text="Új Jelszó:" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,240,0,0" Name="TxtBlck_jelszomegerosites" Text="Jelszó megerősítés:" VerticalAlignment="Top" Width="110" />
+
+        <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" IsEnabled="False"/>
+        <TextBox x:Name="TB_jatekosnev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" IsEnabled="False"/>
+        <PasswordBox x:Name="PB_jelenlegijelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,160,0,0"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_ujjelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,200,0,0"  VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PB_ujjelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
+
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
+        <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
