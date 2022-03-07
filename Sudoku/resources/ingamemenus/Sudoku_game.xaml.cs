@@ -36,8 +36,7 @@ namespace Sudoku
         const int STEP = 1;
         const int WIDTH = 40;
         const int HEIGHT = 40;
-        bool completed = false;
-        string kiiras;
+        
         bool isButtonsOnScreen = false;
         
         public Sudoku_game(string felhasznalonev)
@@ -46,8 +45,6 @@ namespace Sudoku
             Felhasznalonev = felhasznalonev;
             
             //GenerateButtons();
-
-
         }
         private void BT_ujjatek_Click(object sender, RoutedEventArgs e)
         {
@@ -88,6 +85,7 @@ namespace Sudoku
                 currentX = 0;
                 currentY = 0;
             }
+
         }
           
         
@@ -119,6 +117,7 @@ namespace Sudoku
                 }
                 isButtonsOnScreen = true;
             }
+            
         }
 
         static void Update(ref int[,] grid, int shuffleLevel)
