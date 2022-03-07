@@ -86,7 +86,7 @@ namespace Sudoku
         private void cell_keyPressed(object sender, KeyEventArgs e)
         {
             var cell = sender as SudokuCell;
-
+            // https://playwithcsharpdotnet.blogspot.com/2020/07/develop-sudoku-game-using-basic-csharp-codes.html
             // Do nothing if the cell is locked
             if (cell.IsLocked)
                 return;
