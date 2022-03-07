@@ -61,6 +61,7 @@
     <Compile Include="resources\ingamemenus\Ranglistmenu.xaml.cs">
       <DependentUpon>Ranglistmenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="resources\ingamemenus\SudokuCell.cs" />
     <Compile Include="resources\usermenus\Logmenu.xaml.cs">
       <DependentUpon>Logmenu.xaml</DependentUpon>
     </Compile>
@@ -69,6 +70,9 @@
     </Compile>
     <Compile Include="resources\ingamemenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SzamBeiro.xaml.cs">
+      <DependentUpon>SzamBeiro.xaml</DependentUpon>
     </Compile>
     <Page Include="resources\ingamemenus\Beallitasokmenu.xaml">
       <SubType>Designer</SubType>
@@ -99,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="resources\ingamemenus\Sudoku_game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SzamBeiro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

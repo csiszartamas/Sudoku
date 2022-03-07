@@ -177,5 +177,10 @@ namespace Sudoku
                 BT_registration_Click(sender, e);
             }
         }
+
+        private void TB_email_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

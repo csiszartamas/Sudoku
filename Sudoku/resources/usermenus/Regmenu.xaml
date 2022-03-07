@@ -23,7 +23,7 @@
 
         <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_felhasznalonev_KeyDown"/>
         <TextBox x:Name="TB_jatekosnev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_jatekosnev_KeyDown"/>
-        <TextBox x:Name="TB_email" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_email_KeyDown"/>
+        <TextBox x:Name="TB_email" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_email_KeyDown" TextChanged="TB_email_TextChanged"/>
         <PasswordBox x:Name="PB_jelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,200,0,0"  VerticalAlignment="Top" KeyDown="PB_jelszo_KeyDown"/>
         <PasswordBox x:Name="PB_jelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top" KeyDown="PB_jelszomegerosites_KeyDown"/>
 
