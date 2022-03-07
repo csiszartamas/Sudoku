@@ -81,5 +81,21 @@ namespace Sudoku
                 }
             }
         }
+
+        private void PB_jelszo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_login_Click(sender, e);
+            }
+        }
+
+        private void TB_felhasznalonev_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_login_Click(sender, e);
+            }
+        }
     }
 }

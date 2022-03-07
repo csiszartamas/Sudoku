@@ -10,8 +10,8 @@
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="190,140,0,0" Name="TxtBlck_jelszo" Text="Jelszó:" VerticalAlignment="Top" Width="70"  />
 
-        <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <PasswordBox x:Name="PB_jelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,140,0,0"  VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_felhasznalonev_KeyDown"/>
+        <PasswordBox x:Name="PB_jelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,140,0,0"  VerticalAlignment="Top" KeyDown="PB_jelszo_KeyDown" />
 
         <Button x:Name="BT_login" Content="Bejelentkezés" HorizontalAlignment="Left" Height="44" Width="110"  Margin="323,286,0,0" VerticalAlignment="Top" Click="BT_login_Click"/>
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="261,193,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />

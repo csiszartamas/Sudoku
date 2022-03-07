@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,94 +22,149 @@ namespace Sudoku
     public partial class Sudoku_game : Window
     {
         public string Felhasznalonev { get; set; }
-        public object LayoutRoot { get; private set; }
+        
 
         public int[,] grid = new int[9, 9];
-        public string s;
+        static string s;
+
+        public string content;
+
+        List<Button> myButtons = new List<Button>();
+
+        int currentX = 0;
+        int currentY = 0;
+        const int STEP = 1;
+        const int WIDTH = 40;
+        const int HEIGHT = 40;
+        bool completed = false;
+        string kiiras;
+        bool isButtonsOnScreen = false;
+        
         public Sudoku_game(string felhasznalonev)
         {
             InitializeComponent();
             Felhasznalonev = felhasznalonev;
-        }
+            
+            //GenerateButtons();
 
+
+        }
         private void BT_ujjatek_Click(object sender, RoutedEventArgs e)
         {
-            CreateAButton();
+            Init(ref grid);
+            Update(ref grid, 10);
+            GenerateButtons(ref grid);
+            RemoveButtonText();
         }
 
-        private void CreateAButton()
+        private void RemoveButtonText()
         {
-
+            
         }
 
-        public void Init(ref int[,] grid)
+        static void Init(ref int[,] grid)
         {
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                   grid[i, j] = (i * 3 + i / 3 + j) % 9 + 1;
+                    grid[i, j] = (i * 3 + i / 3 + j) % 9 + 1;
 
                 }
             }
         }
 
-        public void Draw(ref int[,] grid, out string _s)
+        
+
+        private void BT_remove_Click(object sender, RoutedEventArgs e)
         {
-            for (int x = 0; x < 9; x++)
+            if (isButtonsOnScreen)
             {
-                for (int y = 0; y < 9; y++)
+                foreach (var item in myButtons)
                 {
-                    s += grid[x, y].ToString() + " ";
+                    MainCanvas.Children.Remove(item);
                 }
-                s += "\n";
+                isButtonsOnScreen = false;
+                currentX = 0;
+                currentY = 0;
             }
-            Console.WriteLine(s);
-            _s = s;
-            s = "";
+        }
+          
+        
+
+        private void GenerateButtons(ref int[,] grid)
+        {
+            if (!isButtonsOnScreen)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        Button newBtn = new Button();
+                        //newBtn.Content = i.ToString();
+                        newBtn.Content += grid[i,j].ToString();
+                        newBtn.Name = "Button" + i.ToString();
+                        newBtn.Width = WIDTH;
+                        newBtn.Height = HEIGHT;
+                        myButtons.Add(newBtn);
+                        
+                        Canvas.SetLeft(newBtn, STEP * currentX);
+                        Canvas.SetTop(newBtn, STEP * currentY);
+                        currentX += WIDTH;
+                        
+                        MainCanvas.Children.Add(newBtn);
+                    }
+                    currentX = 0;
+                    currentY += HEIGHT;
+                }
+                isButtonsOnScreen = true;
+            }
         }
 
-        //public void ChangeTwoCell(ref int[,] grid, int findValue1, int findValue2)
-        //{
-        //    int xParm1, yParm1, xParm2, yParm2;
-        //    xParm1 = yParm1 = xParm2 = yParm2 = 0;
-        //    for (int i = 0; i < 9; i += 3)
-        //    {
-        //        for (int k = 0; k < 9; k += 3)
-        //        {
-        //            for (int j = 0; j < 3; j++)
-        //            {
-        //                for (int z = 0; z < 3; z++)
-        //                {
-        //                    if (grid[i + j, k + z] == findValue1)
-        //                    {
-        //                        xParm1 = i + j;
-        //                        yParm1 = k + z;
+        static void Update(ref int[,] grid, int shuffleLevel)
+        {
+            for (int repeat = 0; repeat < shuffleLevel; repeat++)
+            {
+                Random rand = new Random();
+                Random rand2 = new Random();
+                ChangeTwoCell(ref grid, rand.Next(1, 9), rand2.Next(1, 9));
+            }
+        }
 
-        //                    }
-        //                    if (grid[i + j, k + z] == findValue2)
-        //                    {
-        //                        xParm2 = i + j;
-        //                        yParm2 = k + z;
+        static void ChangeTwoCell(ref int[,] grid, int findValue1, int findValue2)
+        {
+            
+            int xParm1, yParm1, xParm2, yParm2;
+            xParm1 = yParm1 = xParm2 = yParm2 = 0;
+            for (int i = 0; i < 9; i += 3)
+            {
+                for (int k = 0; k < 9; k += 3)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        for (int z = 0; z < 3; z++)
+                        {
+                            if (grid[i + j, k + z] == findValue1)
+                            {
+                                xParm1 = i + j;
+                                yParm1 = k + z;
 
-        //                    }
-        //                }
-        //            }
-        //            grid[xParm1, yParm1] = findValue2;
-        //            grid[xParm2, yParm2] = findValue1;
-        //        }
-        //    }
-        //}
+                            }
+                            if (grid[i + j, k + z] == findValue2)
+                            {
+                                xParm2 = i + j;
+                                yParm2 = k + z;
 
-        //public void Update(ref int[,] grid, int shuffleLevel)
-        //{
-        //    for (int repeat = 0; repeat < shuffleLevel; repeat++)
-        //    {
-        //        Random rand = new Random(Guid.NewGuid().GetHashCode());
-        //        Random rand2 = new Random(Guid.NewGuid().GetHashCode());
-        //        ChangeTwoCell(ref grid, rand.Next(1, 9), rand2.Next(1, 9));
-        //    }
-        //}
+                            }
+                        }
+                    }
+                    grid[xParm1, yParm1] = findValue2;
+                    grid[xParm2, yParm2] = findValue1;
+                }
+            }
+        }
+
+
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {

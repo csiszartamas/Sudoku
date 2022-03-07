@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="Sudoku_game" Height="450" Width="800">
     <Grid Loaded="Grid_Loaded">
-        <Button x:Name="BT_ujjatek" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,30,0,0" VerticalAlignment="Top" Click="BT_ujjatek_Click"/>
-        <Button x:Name="BT_ranglista" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,140,0,0" VerticalAlignment="Top" Click="BT_ranglista_Click"/>
-        <Button x:Name="BT_beallitasok" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,200,0,0" VerticalAlignment="Top" Click="BT_beallitasok_Click"/>
-        <Label Content="Idő:" Margin="462,72,0,0"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46"></Label>
+        <Canvas x:Name="MainCanvas">
+            <Button x:Name="BT_ujjatek" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,30,0,0" VerticalAlignment="Top" Click="BT_ujjatek_Click"/>
+            <Button x:Name="BT_ranglista" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,140,0,0" VerticalAlignment="Top" Click="BT_ranglista_Click"/>
+            <Button x:Name="BT_beallitasok" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110"  Margin="508,200,0,0" VerticalAlignment="Top" Click="BT_beallitasok_Click"/>
+            <Label Content="Idő:" Margin="462,72,0,0"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46"></Label>
 
-        <TextBox x:Name="TB_ido" HorizontalAlignment="Left" Margin="509,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
-        <Label x:Name="LB_koszontes" Content="Label" HorizontalAlignment="Left" Margin="546,270,0,0" VerticalAlignment="Top" Height="121" Width="215"/>
+            <TextBox x:Name="TB_ido" HorizontalAlignment="Left" Margin="509,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+            <Label x:Name="LB_koszontes" Content="Label" HorizontalAlignment="Left" Margin="546,270,0,0" VerticalAlignment="Top" Height="121" Width="215"/>
+            <Button x:Name="BT_remove" Content="Remove" Height="44" Width="110" Click="BT_remove_Click" Canvas.Left="650" Canvas.Top="102"/>
+
+        </Canvas>
 
     </Grid>
 </Window>

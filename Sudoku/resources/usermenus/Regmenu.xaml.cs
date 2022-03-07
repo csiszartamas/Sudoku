@@ -137,5 +137,45 @@ namespace Sudoku
             new Logmenu().Show();
             Close();
         }
+
+        private void TB_felhasznalonev_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_registration_Click(sender, e);
+            }
+        }
+
+        private void TB_jatekosnev_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_registration_Click(sender, e);
+            }
+        }
+
+        private void TB_email_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_registration_Click(sender, e);
+            }
+        }
+
+        private void PB_jelszo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_registration_Click(sender, e);
+            }
+        }
+
+        private void PB_jelszomegerosites_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BT_registration_Click(sender, e);
+            }
+        }
     }
 }
