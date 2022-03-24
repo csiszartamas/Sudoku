@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="431" Width="800" ResizeMode="NoResize">
     <Grid>
-        <Image x:Name="bg" Source="/resources/images/bg.jpg"/>
-        <Button x:Name="BT_logmenu" Content="Login" RenderTransformOrigin="0.486,0.611" Margin="513,87,103,267" Click="BT_logmenu_Click"/>
-        <Button x:Name="BT_regmenu" Content="Registration" RenderTransformOrigin="0.486,0.611" Margin="517,228,99,126" Click="BT_regmenu_Click"/>
+
         <!--<ImageBrush ImageSource="/MyProject;component/Images/bg.png"/>-->
-        
+        <Canvas x:Name="MainCanvas">
+
+            <Image x:Name="BorderPicture" Source="/resources/images/Keret.png" Margin="3,0,0,0" Height="398" Width="391"/>
+            <Image x:Name="SudokuPicture" Source="/resources/images/sudoku.png" Margin="3,0,0,0" Height="363" Width="360" Canvas.Left="18" Canvas.Top="19"/>
+            <Button x:Name="BT_logmenu" Content="Login"  Margin="500,100,0,0" Width="80" Height="45" Click="BT_logmenu_Click" OpacityMask="Black"/>
+            <Button x:Name="BT_regmenu" Content="Registration"  Margin="500,155,0,0" Width="80" Height="45" Click="BT_regmenu_Click" OpacityMask="Black"/>
+        </Canvas>
 
     </Grid>
 </Window>

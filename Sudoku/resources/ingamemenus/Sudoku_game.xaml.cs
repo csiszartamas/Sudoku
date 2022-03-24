@@ -14,6 +14,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Timers;
+using System.Windows.Threading;
+using System.Data.SqlClient;
 
 namespace Sudoku
 {
@@ -23,23 +26,38 @@ namespace Sudoku
     public partial class Sudoku_game : Window
     {
         public string Felhasznalonev { get; set; }
+        public string ConnectionString { get; set; }
         Random rnd = new Random();
-        public int value;
-        public int showrandomvalueshints = 45;
+        public int showrandomvalueshints = 200;
 
-        List<Button> myButtons = new List<Button>();
         SudokuCell[,] cells = new SudokuCell[9, 9];
+        SudokuCell[,] Numpads = new SudokuCell[3, 3];
+        SudokuCell SelectedCell;
+        SudokuCell NumpadCell;
+        Button newBtn = new Button();
 
+        int hintsCount;
         int currentX = 0;
         int currentY = 0;
         const int STEP = 1;
         const int WIDTH = 40;
         const int HEIGHT = 40;
-        
+
+        string Jatekosnev;
+
+        bool gamefinished = false;
         bool isButtonsOnScreen = false;
-        
+        bool isButtonsGenerated = false;
+        bool nemvalasztottszintet = false;
+
+        public DispatcherTimer _timer;
+        public int time = 15;
+
         public Sudoku_game(string felhasznalonev)
         {
+            ConnectionString =
+                @"Server   = (localdb)\MSSQLLocalDB;" +
+                 "Database = szakdolgozat;";
             InitializeComponent();
             Felhasznalonev = felhasznalonev;
         }
@@ -57,12 +75,14 @@ namespace Sudoku
                         cells[i, j].Name = "Cell" + i.ToString();
                         cells[i, j].Width = WIDTH;
                         cells[i, j].Height = HEIGHT;
-                        cells[i, j].KeyDown += cell_keyPressed;
                         cells[i, j].Click += cell_Click;
                         cells[i, j].Background = ((i / 3) + (j / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
-                        //myButtons.Add(cells[i, j]);
-                        Canvas.SetLeft(cells[i, j], STEP * currentX);
-                        Canvas.SetTop(cells[i, j], STEP * currentY);
+                        cells[i, j].Foreground = new SolidColorBrush(Colors.DarkMagenta);
+                        cells[i, j].Value = 0;
+                        cells[i, j].FontSize = 14;
+                        //cells[i, j].BorderBrush = new SolidColorBrush(Colors.Black);
+                        Canvas.SetLeft(cells[i, j],20+ STEP * currentX);
+                        Canvas.SetTop(cells[i, j],20+ STEP * currentY);
                         currentX += WIDTH;
                         MainCanvas.Children.Add(cells[i, j]);
                     }
@@ -76,6 +96,12 @@ namespace Sudoku
                 foreach (var item in cells)
                 {
                     MainCanvas.Children.Remove(item);
+                    // Clear the cell only if it is not locked
+                    if (item.IsLocked == false)
+                    {
+                        item.Clear();
+                        item.Value = 0;
+                    }
                 }
                 isButtonsOnScreen = false;
                 currentX = 0;
@@ -84,44 +110,197 @@ namespace Sudoku
                 createCells();
             }
         }
-        private void cell_Click(object sender, EventArgs e)
+        private void Numpad_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Igen: " +this.Content.ToString());
-        }
+            NumpadCell = sender as SudokuCell;
+            SelectedCell.Content = NumpadCell.Content;
+            SelectedCell.Value = NumpadCell.Value;
 
-        
-            // https://playwithcsharpdotnet.blogspot.com/2020/07/develop-sudoku-game-using-basic-csharp-codes.html
-            private void cell_keyPressed(object sender, KeyEventArgs e)
+            for (int i = 0; i < 3; i++)
             {
-                var cell = sender as SudokuCell;
-
-                // Do nothing if the cell is locked
-                if (cell.IsLocked)
-                    return;
-
-                int value;
-
-                // Add the pressed key value in the cell only if it is a number
-                if (int.TryParse(e.Key.ToString(), out value))
+                for (int j = 0; j < 3; j++)
                 {
-                    // Clear the cell value if pressed key is zero
-                    if (value == 0)
-                        cell.Clear();
-                    else
-                        cell.Content = value.ToString();
-
-                    cell.Foreground = new SolidColorBrush(Colors.DarkGray);
+                    Numpads[i,j].Visibility = Visibility.Hidden;
                 }
             }
-            private void cell_teszt(object sender, RoutedEventArgs e)
-        {
-            
+
+            for (int k = 0; k < 9; k++)
+            {
+                for (int l = 0; l < 9; l++)
+                {
+                    cells[k, l].Background = ((k / 3) + (l / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
+                }
+            }
+
+            newBtn.Visibility = Visibility.Hidden;
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedCell.Content = string.Empty;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Numpads[i, j].Visibility = Visibility.Hidden;
+                }
+            }
+
+            for (int k = 0; k < 9; k++)
+            {
+                for (int l = 0; l < 9; l++)
+                {
+                    cells[k, l].Background = ((k / 3) + (l / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
+                }
+            }
+
+            newBtn.Visibility = Visibility.Hidden;
+            SelectedCell.Value = 0;
+        }
+
+        private void cell_Click(object sender, EventArgs e)
+        {
+            SelectedCell = sender as SudokuCell;
+
+            if (SelectedCell.IsLocked)
+                return;
+            SelectedCell.Background = new SolidColorBrush(Colors.LightBlue);
+            //MessageBox.Show(""+SelectedCell.Value);
+
+            currentX = 360;
+            currentY = 160;
+            if (!isButtonsGenerated)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        Numpads[i, j] = new SudokuCell();
+                        Numpads[i, j].Name = "Numpad" + i.ToString();
+                        Numpads[i, j].Width = WIDTH;
+                        Numpads[i, j].Height = HEIGHT;
+                        Numpads[i, j].Click += Numpad_Click;
+                        Numpads[i, j].Content = i * 3 + j + 1;
+                        Numpads[i, j].Value = i * 3 + j + 1;
+                        Canvas.SetLeft(Numpads[i, j], STEP * currentX +2);
+                        Canvas.SetBottom(Numpads[i, j], STEP * currentY);
+                        currentX += WIDTH;
+                        MainCanvas.Children.Add(Numpads[i, j]);
+                    }
+                    currentX = 360;
+                    currentY += HEIGHT;
+                    isButtonsOnScreen = true;
+                }
+
+                newBtn.Content = "Delete";
+                newBtn.Name = "BT_Delete";
+                newBtn.Width = 3 * WIDTH;
+                newBtn.Height = HEIGHT;
+                newBtn.Click += Delete_Click;
+                Canvas.SetLeft(newBtn, STEP * currentX +2);
+                Canvas.SetBottom(newBtn, STEP * currentY);
+                MainCanvas.Children.Add(newBtn);
+
+                isButtonsGenerated = true;
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        Numpads[i, j].Visibility = Visibility.Visible;
+                    }
+                }
+                newBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool checking()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                List<int> Lista = new List<int>();
+
+                for (int j = 0; j < 9; j++)
+                {
+                    if(!Lista.Contains((int)cells[i, j].Value))
+                    {
+                        Lista.Add((int)cells[i,j].Value);
+                    }
+                }
+                if(Lista.Count != 9 || Lista.Contains(0))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                List<int> Lista = new List<int>();
+
+                for (int j = 0; j < 9; j++)
+                {
+                    if (!Lista.Contains((int)cells[j, i].Value))
+                    {
+                        Lista.Add((int)cells[j, i].Value);
+                    }
+                }
+                if (Lista.Count != 9 || Lista.Contains(0))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    List<int> Lista = new List<int>();
+                    for (int k = 0; k < 3; k++)
+                    {
+                        for (int l = 0; l < 3; l++)
+                        {
+                            if (!Lista.Contains((int)cells[i*3+k, j*3+l].Value))
+                            {
+                                Lista.Add((int)cells[i * 3 + k, j*3+l].Value);
+                            }
+                        }
+                    }
+                    if (Lista.Count != 9 || Lista.Contains(0))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        }
+            
+            
         private void startNewGame()
         {
+            BorderPicture.Visibility = Visibility.Visible;
             loadValues();
-            //Show values of 45 cells as hint
-            showRandomValuesHints(showrandomvalueshints);
+            //var hintsCount = 200;
+
+
+            // Assign the hints count based on the 
+            // level player chosen
+            //if (beginnerLevel.Checked)
+            //    hintsCount = 45;
+            //else if (IntermediateLevel.Checked)
+            //    hintsCount = 30;
+            //else if (AdvancedLevel.Checked)
+            //    hintsCount = 15;
+            if(!nemvalasztottszintet)
+            {
+                MessageBox.Show("Válassz nehézségi szintet mielött játszanál!", "Hiba!");
+            }
+            else
+            {
+                showRandomValuesHints(hintsCount);
+            }
+            
         }
 
         private void loadValues()
@@ -129,8 +308,8 @@ namespace Sudoku
             // Clear the values in each cells
             foreach (var cell in cells)
             {
-                cell.Value = 0;
                 cell.Clear();
+                cell.Value = 0;
             }
 
             // This method will be called recursively 
@@ -175,8 +354,10 @@ namespace Sudoku
             }
             while (!isValidNumber(value, i, j) || !findValueForNextCell(i, j));
 
+            
+
             // TDO: Remove this line after testing
-            cells[i, j].Content = value.ToString();
+            //cells[i, j].Content = value.ToString();
 
             return true;
         }
@@ -219,40 +400,128 @@ namespace Sudoku
                 // Style the hint cells differently and
                 // lock the cell so that player can't edit the value
                 cells[rX, rY].Content = cells[rX, rY].Value.ToString();
-                cells[rX, rY].Foreground = new SolidColorBrush(Colors.Red);
+                cells[rX, rY].Foreground = new SolidColorBrush(Colors.Black);
                 cells[rX, rY].IsLocked = true;
+
+                
             }
+            check_valid_value();
         }
 
+        private void check_valid_value()
+        {
+            for (int k = 0; k < 9; k++)
+            {
+                for (int l = 0; l < 9; l++)
+                {
+                    if ((string)cells[k, l].Content == string.Empty)
+                    {
+                        cells[k, l].Value = 0;
+                    }
+                }
+            }
+        }
 
         private void BT_ujjatek_Click(object sender, RoutedEventArgs e)
         {
             createCells();
             startNewGame();
+            //SetTimer();
         }
 
+        /*private static void SetTimer()
+        {
+            _timer = new DispatcherTimer();
+            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
+        }
         
-
+        void Timer_Tick(object sender, EventArgs e)
+        {
+            if (time>10)
+            {
+                time--;
+                lblTime.Content = string.Format($"00:0{time / 60}:{time % 60}");
+            }
+            else 
+            {
+                _timer.Stop();
+                MessageBox.Show("Boow");
+            }
+        }*/
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             LB_koszontes.Content = $"Üdvözöllek {Felhasznalonev}!";
+            BorderPicture.Visibility = Visibility.Hidden;
         }
 
         private void BT_ranglista_Click(object sender, RoutedEventArgs e)
         {
-            
             new Ranglistmenu().Show();
         }
 
         private void BT_beallitasok_Click(object sender, RoutedEventArgs e)
         {
-            new Beallitasokmenu(Felhasznalonev).Show();
+            using (var c = new SqlConnection(ConnectionString))
+            {
+                c.Open();
+
+                var r = new SqlCommand($"SELECT jatekosnev FROM jatekos WHERE felhasznalonev = '" + Felhasznalonev + "';", c).ExecuteReader();
+
+                while (r.Read())
+                {
+                    Jatekosnev = $"{r[0]}";
+                }
+
+                
+            }
+            new Beallitasokmenu(Felhasznalonev,Jatekosnev).Show();
         }
 
         private void BT_ujjatek_GotFocus(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void checkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(checking())
+            {
+                MessageBox.Show("jó");
+                gamefinished = true;
+            }
+            else
+            {
+                MessageBox.Show("Rossz");
+            }
+
+        }
+
+        private void CB_Checker_Check(object sender, RoutedEventArgs e)
+        {
+            if(RB_Easy.IsChecked == true)
+            {
+                RB_Medium.IsChecked = false;
+                RB_Hard.IsChecked = false;
+                nemvalasztottszintet = true;
+                hintsCount = 200;
+            }
+            if(RB_Medium.IsChecked == true)
+            {
+                RB_Easy.IsChecked = false;
+                RB_Hard.IsChecked = false;
+                nemvalasztottszintet = true;
+                hintsCount = 75;
+            }
+            if(RB_Hard.IsChecked == true)
+            {
+                RB_Easy.IsChecked = false;
+                RB_Medium.IsChecked = false;
+                nemvalasztottszintet = true;
+                hintsCount = 15;
+            }
         }
     }
 }

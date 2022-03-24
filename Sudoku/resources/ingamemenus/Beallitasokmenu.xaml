@@ -20,6 +20,6 @@
         <PasswordBox x:Name="PB_ujjelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
 
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-        <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_adatvaltas_Click"/>
     </Grid>
 </Window>

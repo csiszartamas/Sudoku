@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku"
         mc:Ignorable="d"
-        Title="Logmenu" Height="450" Width="800">
+        Title="Logmenu" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="532*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
         <TextBlock Height="22" HorizontalAlignment="Left" Margin="190,140,0,0" Name="TxtBlck_jelszo" Text="Jelszó:" VerticalAlignment="Top" Width="70"  />
 
@@ -15,7 +24,7 @@
 
         <Button x:Name="BT_login" Content="Bejelentkezés" HorizontalAlignment="Left" Height="44" Width="110"  Margin="323,286,0,0" VerticalAlignment="Top" Click="BT_login_Click"/>
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="261,193,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-        <TextBlock Height="50" HorizontalAlignment="Left" Margin="109,212,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">
+        <TextBlock Height="50" HorizontalAlignment="Left" Margin="109,212,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5" Grid.ColumnSpan="4">
             Megjegyzés: Kérjük, jelentkezzen be itt, hogy megtekinthesse az oldal funkcióit. Ha új vagy ezen az oldalon, akkor <LineBreak />
             kérjük, kattintson a
            <!--szövegblokk mint hiperlink-->

@@ -11,8 +11,10 @@ namespace Sudoku
 
         public void Clear()
         {
+            //this.Content = "a";
             this.Content = string.Empty;
             this.IsLocked = false;
+            this.Value = 0;
         }
     }
 }

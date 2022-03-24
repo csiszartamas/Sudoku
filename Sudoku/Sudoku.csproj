@@ -71,9 +71,6 @@
     <Compile Include="resources\ingamemenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SzamBeiro.xaml.cs">
-      <DependentUpon>SzamBeiro.xaml</DependentUpon>
-    </Compile>
     <Page Include="resources\ingamemenus\Beallitasokmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,10 +100,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="resources\ingamemenus\Sudoku_game.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SzamBeiro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +135,8 @@
     <Resource Include="resources\images\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\images\Keret.png" />
+    <Resource Include="resources\images\sudoku.png" />
     <Content Include="resources\SQL_LETREHOZO.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
