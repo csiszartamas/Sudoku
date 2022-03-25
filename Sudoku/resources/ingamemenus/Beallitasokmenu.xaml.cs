@@ -46,7 +46,19 @@ namespace Sudoku
             string ujjelszo = TxtBlck_ujjelszo.Text;
             string ujjelszomegerosites = TxtBlck_jelszomegerosites.Text;
 
+            if (ujjelszo != ujjelszomegerosites)
+            {
 
+            }
+            else
+            {
+                using (var c = new SqlConnection(ConnectionString))
+                {
+                    c.Open();
+                    new SqlCommand($"UPDATE jatekos SET jelszo = '{TxtBlck_ujjelszo.Text}' WHERE felhasznalonev = '{Felhasznalonev}';", c).ExecuteNonQuery();
+                    MessageBox.Show("Sikeresen frissítetted!");
+                }
+            }
         }
     }
 }
