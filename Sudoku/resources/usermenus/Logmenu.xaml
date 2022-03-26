@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sudoku"
         mc:Ignorable="d"
         Title="Logmenu" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.Background>
             <ImageBrush/>
         </Grid.Background>
@@ -16,8 +16,8 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="163*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
-        <TextBlock Height="22" HorizontalAlignment="Left" Margin="190,140,0,0" Name="TxtBlck_jelszo" Text="Jelszó:" VerticalAlignment="Top" Width="70"  />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="170,80,0,0" x:Name="TxtBlck_felhasznalonev" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="190,140,0,0" x:Name="TxtBlck_jelszo" Text="Jelszó:" VerticalAlignment="Top" Width="70"  />
 
         <TextBox x:Name="TB_felhasznalonev" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" KeyDown="TB_felhasznalonev_KeyDown"/>
         <PasswordBox x:Name="PB_jelszo" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,140,0,0"  VerticalAlignment="Top" KeyDown="PB_jelszo_KeyDown" />

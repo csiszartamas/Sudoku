@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Nyelvvalaszto.xaml.cs">
+      <DependentUpon>Nyelvvalaszto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="resources\ingamemenus\Beallitasokmenu.xaml.cs">
       <DependentUpon>Beallitasokmenu.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
     <Compile Include="resources\ingamemenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
     </Compile>
+    <Page Include="Nyelvvalaszto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="resources\ingamemenus\Beallitasokmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +144,8 @@
   <ItemGroup>
     <Resource Include="resources\images\Keret.png" />
     <Resource Include="resources\images\sudoku.png" />
+    <Resource Include="resources\images\eng.png" />
+    <Resource Include="resources\images\hu.png" />
     <Content Include="resources\SQL_LETREHOZO.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

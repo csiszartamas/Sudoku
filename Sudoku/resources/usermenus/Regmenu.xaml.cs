@@ -20,17 +20,19 @@ namespace Sudoku
     /// <summary>
     /// Interaction logic for Regmenu.xaml
     /// </summary>
-   
+
     public partial class Regmenu : Window
     {
         public string ConnectionString { get; set; }
-        public Regmenu()
+        public int Nyelv { get; set; }
+        public Regmenu(int nyelv)
         {
 
             ConnectionString =
                 @"Server   = (localdb)\MSSQLLocalDB;" +
                  "Database = szakdolgozat;";
             InitializeComponent();
+            Nyelv = nyelv;
         }
 
         private void BT_registration_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace Sudoku
                 errormessage.Text = "Adjon meg felhasználónevet!";
                 TB_email.Focus();
             }
-            else if(TB_felhasznalonev.Text.Length < 3)
+            else if (TB_felhasznalonev.Text.Length < 3)
             {
                 errormessage.Text = "Legalább 4 karakter legyen a felhasználóneve!";
                 TB_email.Focus();
@@ -72,6 +74,7 @@ namespace Sudoku
                 string jatekosnev = TB_jatekosnev.Text;
                 string email = TB_email.Text;
                 string jelszo = PB_jelszo.Password;
+
                 if (PB_jelszo.Password.Length == 0)
                 {
                     errormessage.Text = "Adjon meg jelszavat!";
@@ -92,9 +95,14 @@ namespace Sudoku
                     errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
                     PB_jelszo.Focus();
                 }
+                else if (Nyelv != 1 && Nyelv != 2)
+                {
+                    errormessage.Text = "Válasszon nyelvet, ha még nem választott!";
+                    
+                }
                 else
                 {
-                    
+
                     SqlConnection con = new SqlConnection(ConnectionString);
                     con.Open();
                     SqlDataAdapter sda = new SqlDataAdapter("Select count(felhasznalonev) from jatekos where felhasznalonev = '" + felhasznalonev + "'", con);
@@ -113,12 +121,12 @@ namespace Sudoku
                             using (var c = new SqlConnection(ConnectionString))
                             {
                                 c.Open();
-                                new SqlCommand($"Insert into jatekos (felhasznalonev,jelszo,email,jatekosnev,rangid,nyelvid) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "',null,null)", c).ExecuteNonQuery();
+                                new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv,rangid) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "','" + Nyelv + "',null)", c).ExecuteNonQuery();
 
                             }
 
                             MessageBox.Show("Sikeres regisztráció!");
-                            new Logmenu().Show();
+                            new Logmenu(Nyelv).Show();
                             Close();
                         }
                         catch
@@ -127,14 +135,14 @@ namespace Sudoku
                         }
                     }
                     errormessage.Text = "";
-                    
+
                 }
             }
         }
 
         private void BT_login_Click(object sender, RoutedEventArgs e)
         {
-            new Logmenu().Show();
+            new Logmenu(Nyelv).Show();
             Close();
         }
 
@@ -182,5 +190,15 @@ namespace Sudoku
         {
 
         }
+
+        //private void BT_magyar_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Nyelv = 1;
+        //}
+
+        //private void BT_angol_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Nyelv = 2;
+        //}
     }
 }

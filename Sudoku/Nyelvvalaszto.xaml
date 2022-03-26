@@ -1,0 +1,29 @@
+﻿<Window x:Class="Sudoku.Nyelvvalaszto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        Title="Nyelvvalaszto" Height="450" Width="800">
+    <Grid>
+
+        <!--<ImageBrush ImageSource="/MyProject;component/Images/bg.png"/>-->
+        <Canvas x:Name="MainCanvas">
+
+
+            <Button x:Name="BT_magyar" Content="Magyar" Width="80" Height="45" Click="BT_magyar_Click"  OpacityMask="Black" Canvas.Left="126" Canvas.Top="182">
+                <Button.Background>
+                    <ImageBrush ImageSource="resources/images/hu.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="BT_angol" Content="Angol" Width="80" Height="45" Click="BT_angol_Click" OpacityMask="Black" Canvas.Left="536" Canvas.Top="185">
+                <Button.Background>
+                    <ImageBrush ImageSource="resources/images/eng.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Height="20" x:Name ="errormessage" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" HorizontalAlignment="Left" Canvas.Left="258" Canvas.Top="271" VerticalAlignment="Top" />
+        </Canvas>
+
+    </Grid>
+</Window>

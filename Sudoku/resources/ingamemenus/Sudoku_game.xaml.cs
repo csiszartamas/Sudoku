@@ -36,6 +36,8 @@ namespace Sudoku
         SudokuCell NumpadCell;
         Button newBtn = new Button();
 
+        int Nyelv = 0;
+        int Timetick = 0;
         int hintsCount;
         int currentX = 0;
         int currentY = 0;
@@ -81,8 +83,8 @@ namespace Sudoku
                         cells[i, j].Value = 0;
                         cells[i, j].FontSize = 14;
                         //cells[i, j].BorderBrush = new SolidColorBrush(Colors.Black);
-                        Canvas.SetLeft(cells[i, j],20+ STEP * currentX);
-                        Canvas.SetTop(cells[i, j],20+ STEP * currentY);
+                        Canvas.SetLeft(cells[i, j], 20 + STEP * currentX);
+                        Canvas.SetTop(cells[i, j], 20 + STEP * currentY);
                         currentX += WIDTH;
                         MainCanvas.Children.Add(cells[i, j]);
                     }
@@ -120,7 +122,7 @@ namespace Sudoku
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Numpads[i,j].Visibility = Visibility.Hidden;
+                    Numpads[i, j].Visibility = Visibility.Hidden;
                 }
             }
 
@@ -168,8 +170,8 @@ namespace Sudoku
             SelectedCell.Background = new SolidColorBrush(Colors.LightBlue);
             //MessageBox.Show(""+SelectedCell.Value);
 
-            currentX = 360;
-            currentY = 160;
+            currentX = 382;
+            currentY = 140;
             if (!isButtonsGenerated)
             {
                 for (int i = 0; i < 3; i++)
@@ -183,12 +185,12 @@ namespace Sudoku
                         Numpads[i, j].Click += Numpad_Click;
                         Numpads[i, j].Content = i * 3 + j + 1;
                         Numpads[i, j].Value = i * 3 + j + 1;
-                        Canvas.SetLeft(Numpads[i, j], STEP * currentX +2);
+                        Canvas.SetLeft(Numpads[i, j], STEP * currentX + 2);
                         Canvas.SetBottom(Numpads[i, j], STEP * currentY);
                         currentX += WIDTH;
                         MainCanvas.Children.Add(Numpads[i, j]);
                     }
-                    currentX = 360;
+                    currentX = 382;
                     currentY += HEIGHT;
                     isButtonsOnScreen = true;
                 }
@@ -198,7 +200,7 @@ namespace Sudoku
                 newBtn.Width = 3 * WIDTH;
                 newBtn.Height = HEIGHT;
                 newBtn.Click += Delete_Click;
-                Canvas.SetLeft(newBtn, STEP * currentX +2);
+                Canvas.SetLeft(newBtn, STEP * currentX + 2);
                 Canvas.SetBottom(newBtn, STEP * currentY);
                 MainCanvas.Children.Add(newBtn);
 
@@ -225,12 +227,12 @@ namespace Sudoku
 
                 for (int j = 0; j < 9; j++)
                 {
-                    if(!Lista.Contains((int)cells[i, j].Value))
+                    if (!Lista.Contains((int)cells[i, j].Value))
                     {
-                        Lista.Add((int)cells[i,j].Value);
+                        Lista.Add((int)cells[i, j].Value);
                     }
                 }
-                if(Lista.Count != 9 || Lista.Contains(0))
+                if (Lista.Count != 9 || Lista.Contains(0))
                 {
                     return false;
                 }
@@ -260,9 +262,9 @@ namespace Sudoku
                     {
                         for (int l = 0; l < 3; l++)
                         {
-                            if (!Lista.Contains((int)cells[i*3+k, j*3+l].Value))
+                            if (!Lista.Contains((int)cells[i * 3 + k, j * 3 + l].Value))
                             {
-                                Lista.Add((int)cells[i * 3 + k, j*3+l].Value);
+                                Lista.Add((int)cells[i * 3 + k, j * 3 + l].Value);
                             }
                         }
                     }
@@ -275,24 +277,14 @@ namespace Sudoku
             return true;
 
         }
-            
-            
+
+
         private void startNewGame()
         {
             BorderPicture.Visibility = Visibility.Visible;
             loadValues();
-            //var hintsCount = 200;
 
-
-            // Assign the hints count based on the 
-            // level player chosen
-            //if (beginnerLevel.Checked)
-            //    hintsCount = 45;
-            //else if (IntermediateLevel.Checked)
-            //    hintsCount = 30;
-            //else if (AdvancedLevel.Checked)
-            //    hintsCount = 15;
-            if(!nemvalasztottszintet)
+            if (!nemvalasztottszintet)
             {
                 MessageBox.Show("Válassz nehézségi szintet mielött játszanál!", "Hiba!");
             }
@@ -300,27 +292,27 @@ namespace Sudoku
             {
                 showRandomValuesHints(hintsCount);
             }
-            
+
         }
 
         private void loadValues()
         {
-            // Clear the values in each cells
+            // Töröljük az egyes cellák értékeit
             foreach (var cell in cells)
             {
                 cell.Clear();
                 cell.Value = 0;
             }
 
-            // This method will be called recursively 
-            // until it finds suitable values for each cells
+            // Ezt a metódust rekurzívan fogjuk meghívni 
+            // amíg nem talál megfelelő értékeket az egyes cellákhoz
             findValueForNextCell(0, -1);
         }
 
         private bool findValueForNextCell(int i, int j)
         {
-            // Increment the i and j values to move to the next cell
-            // and if the columsn ends move to the next row
+            // Az i és j értékek növelése a következő cellára lépéshez
+            // és ha az oszlopok véget érnek, lépjünk a következő sorba.
             if (++j > 8)
             {
                 j = 0;
@@ -333,19 +325,19 @@ namespace Sudoku
             var value = 0;
             var numsLeft = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            // Find a random and valid number for the cell and go to the next cell 
-            // and check if it can be allocated with another random and valid number
+            // Keressünk egy véletlenszerű és érvényes számot a cellához, és lépjünk a következő cellához. 
+            // és ellenőrizze, hogy ki lehet-e osztani egy másik véletlenszerű és érvényes számmal.
             do
             {
-                // If there is not numbers left in the list to try next, 
-                // return to the previous cell and allocate it with a different number
+                // Ha nem maradt szám a listában, akkor próbáljuk meg a következőt, 
+                // visszatérünk az előző cellához, és egy másik számot rendelünk hozzá.
                 if (numsLeft.Count < 1)
                 {
                     cells[i, j].Value = 0;
                     return false;
                 }
 
-                // Take a random number from the numbers left in the list
+                // Vegyünk fel egy véletlen számot a listában maradt számok közül.
                 value = numsLeft[rnd.Next(0, numsLeft.Count)];
                 cells[i, j].Value = value;
 
@@ -354,9 +346,9 @@ namespace Sudoku
             }
             while (!isValidNumber(value, i, j) || !findValueForNextCell(i, j));
 
-            
 
-            // TDO: Remove this line after testing
+
+            // Tesztelésből feltölteni az egészet.
             //cells[i, j].Content = value.ToString();
 
             return true;
@@ -388,6 +380,7 @@ namespace Sudoku
             return true;
         }
 
+
         private void showRandomValuesHints(int hintsCount)
         {
             // Show value in random cells
@@ -403,7 +396,7 @@ namespace Sudoku
                 cells[rX, rY].Foreground = new SolidColorBrush(Colors.Black);
                 cells[rX, rY].IsLocked = true;
 
-                
+
             }
             check_valid_value();
         }
@@ -426,34 +419,37 @@ namespace Sudoku
         {
             createCells();
             startNewGame();
-            //SetTimer();
+            SetTimer();
         }
 
-        /*private static void SetTimer()
+        private static void SetTimer()
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = new TimeSpan(0, 0, 1);
-            _timer.Tick += Timer_Tick;
-            _timer.Start();
+
         }
-        
-        void Timer_Tick(object sender, EventArgs e)
-        {
-            if (time>10)
-            {
-                time--;
-                lblTime.Content = string.Format($"00:0{time / 60}:{time % 60}");
-            }
-            else 
-            {
-                _timer.Stop();
-                MessageBox.Show("Boow");
-            }
-        }*/
+
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            LB_koszontes.Content = $"Üdvözöllek {Felhasznalonev}!";
+            using (var c = new SqlConnection(ConnectionString))
+            {
+                c.Open();
+                var r = new SqlCommand($"SELECT nyelv FROM jatekos WHERE felhasznalonev = '" + Felhasznalonev + "';", c).ExecuteReader();
+                r.Read();
+                Nyelv = Convert.ToInt32(r[0].ToString());
+
+
+
+                if (Nyelv == 1)
+                {
+                    LB_koszontes.Content = $"Üdvözöllek {Felhasznalonev}!";
+                }
+                else if (Nyelv == 2)
+                {
+                    LB_koszontes.Content = $"Welcome {Felhasznalonev}!";
+                }
+            }
+
+
             BorderPicture.Visibility = Visibility.Hidden;
         }
 
@@ -475,9 +471,9 @@ namespace Sudoku
                     Jatekosnev = $"{r[0]}";
                 }
 
-                
+
             }
-            new Beallitasokmenu(Felhasznalonev,Jatekosnev).Show();
+            new Beallitasokmenu(Felhasznalonev, Jatekosnev).Show();
         }
 
         private void BT_ujjatek_GotFocus(object sender, RoutedEventArgs e)
@@ -487,7 +483,7 @@ namespace Sudoku
 
         private void checkButton_Click(object sender, RoutedEventArgs e)
         {
-            if(checking())
+            if (checking())
             {
                 MessageBox.Show("jó");
                 gamefinished = true;
@@ -501,21 +497,21 @@ namespace Sudoku
 
         private void CB_Checker_Check(object sender, RoutedEventArgs e)
         {
-            if(RB_Easy.IsChecked == true)
+            if (RB_Easy.IsChecked == true)
             {
                 RB_Medium.IsChecked = false;
                 RB_Hard.IsChecked = false;
                 nemvalasztottszintet = true;
                 hintsCount = 200;
             }
-            if(RB_Medium.IsChecked == true)
+            if (RB_Medium.IsChecked == true)
             {
                 RB_Easy.IsChecked = false;
                 RB_Hard.IsChecked = false;
                 nemvalasztottszintet = true;
                 hintsCount = 75;
             }
-            if(RB_Hard.IsChecked == true)
+            if (RB_Hard.IsChecked == true)
             {
                 RB_Easy.IsChecked = false;
                 RB_Medium.IsChecked = false;

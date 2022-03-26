@@ -21,20 +21,21 @@ namespace Sudoku
     /// </summary>
     public partial class Logmenu : Window
     {
+        public int Nyelv { get; set; }
         public string ConnectionString { get; set; }
-        public Logmenu()
+        public Logmenu(int nyelv)
         {
             ConnectionString =
                 @"Server   = (localdb)\MSSQLLocalDB;" +
                  "Database = szakdolgozat;";
             InitializeComponent();
-
+            Nyelv = nyelv;
         }
 
 
         private void BT_register(object sender, RoutedEventArgs e)
         {
-            new Regmenu().Show();
+            new Regmenu(Nyelv).Show();
             Close();
         }
 
@@ -95,6 +96,22 @@ namespace Sudoku
             if (e.Key == Key.Return)
             {
                 BT_login_Click(sender, e);
+            }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Nyelv == 1)
+            {
+                TxtBlck_felhasznalonev.Text = "Felhasználónév: ";
+                TxtBlck_jelszo.Text = "Jelszó: ";
+                BT_login.Content = "Bejelentkezés";
+            }
+            else if (Nyelv == 2)
+            {
+                TxtBlck_felhasznalonev.Text = "Username: ";
+                TxtBlck_jelszo.Text = "Passsword: ";
+                BT_login.Content = "Login";
             }
         }
     }

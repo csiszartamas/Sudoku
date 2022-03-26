@@ -21,5 +21,15 @@
 
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
         <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_adatvaltas_Click"/>
+        <Button x:Name="BT_magyar" Content="Magyar" Click="BT_magyar_Click"  OpacityMask="Black" Margin="411,304,301,70">
+            <Button.Background>
+                <ImageBrush ImageSource="/Sudoku;component/resources/images/hu.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BT_angol" Content="Angol" Click="BT_angol_Click" OpacityMask="Black" Margin="498,304,214,70">
+            <Button.Background>
+                <ImageBrush ImageSource="/Sudoku;component/resources/images/eng.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
