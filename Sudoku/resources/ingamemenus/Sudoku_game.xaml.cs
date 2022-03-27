@@ -185,6 +185,7 @@ namespace Sudoku
                         Numpads[i, j].Height = HEIGHT;
                         Numpads[i, j].Click += Numpad_Click;
                         Numpads[i, j].Content = i * 3 + j + 1;
+                        //Numpads[i, j].Content = i * 3 + j + 1;
                         Numpads[i, j].Value = i * 3 + j + 1;
                         Numpads[i, j].Style = Application.Current.Resources["RoundButtonTemplate"] as Style;
                         Numpads[i, j].Background = new SolidColorBrush(Colors.Magenta);
