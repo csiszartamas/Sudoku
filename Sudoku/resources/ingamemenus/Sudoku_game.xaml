@@ -8,7 +8,7 @@
         Title="Sudoku_game" Height="440" Width="800" ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
         <Canvas x:Name="MainCanvas">
-            <Button x:Name="BT_ujjatek" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ujjatek_Click" GotFocus="BT_ujjatek_GotFocus" Canvas.Left="545" Canvas.Top="147"/>
+            <Button x:Name="BT_ujjatek" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ujjatek_Click" GotFocus="BT_ujjatek_GotFocus" Canvas.Left="545" Canvas.Top="147" MouseRightButtonDown="BT_ujjatek_MouseRightButtonDown"/>
             <Button x:Name="BT_ranglista" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ranglista_Click" Canvas.Left="673" Canvas.Top="199"/>
             <Button x:Name="BT_beallitasok" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_beallitasok_Click" Canvas.Left="671" Canvas.Top="281"/>
             <Label Content="Idő:"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Canvas.Left="660" Canvas.Top="34"/>

@@ -78,6 +78,7 @@ namespace Sudoku
                         cells[i, j].Width = WIDTH;
                         cells[i, j].Height = HEIGHT;
                         cells[i, j].Click += cell_Click;
+                        cells[i, j].MouseRightButtonDown += teszt;
                         cells[i, j].Background = ((i / 3) + (j / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
                         cells[i, j].Foreground = new SolidColorBrush(Colors.DarkMagenta);
                         cells[i, j].Value = 0;
@@ -518,6 +519,15 @@ namespace Sudoku
                 nemvalasztottszintet = true;
                 hintsCount = 15;
             }
+        }
+
+        private void BT_ujjatek_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Jobbklikk");
+        }
+        private void teszt(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Jobbklikk");
         }
     }
 }
