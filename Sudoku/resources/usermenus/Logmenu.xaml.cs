@@ -114,5 +114,15 @@ namespace Sudoku
                 BT_login.Content = "Login";
             }
         }
+
+        private void BT_login_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_login.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_login_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_login.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
     }
 }

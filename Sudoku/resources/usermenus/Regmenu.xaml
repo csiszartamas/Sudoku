@@ -28,7 +28,7 @@
         <PasswordBox x:Name="PB_jelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top" KeyDown="PB_jelszomegerosites_KeyDown"/>
 
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-        <Button x:Name="BT_registration" Content="Regisztráció" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_registration_Click"/>
+        <Button x:Name="BT_registration" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Regisztráció" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_registration_Click" MouseEnter="BT_registration_MouseEnter" MouseLeave="BT_registration_MouseLeave"/>
 
         <TextBlock Height="50" HorizontalAlignment="Left" Margin="299,304,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">
             Megjegyzés: Ha már van profilja <LineBreak />

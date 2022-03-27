@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Sudoku
 {
@@ -32,6 +33,37 @@ namespace Sudoku
         private void BT_angol_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow(2).Show();
+        }
+
+        private void BT_angol_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+            /*var brush = new ImageBrush();
+            brush.ImageSource = new BitmapImage(new Uri("resources/images/eng.png", UriKind.Relative));
+            BT_angol.Background = brush;*/
+
+
+        }
+        private void OnSetBackground(object sender, RoutedEventArgs e)
+
+        {
+
+            Button button = sender as Button;
+
+            ImageBrush brush = new ImageBrush();
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+
+            bitmap.UriSource = new Uri(@"..\..\resources\images\eng.jpg", UriKind.Absolute);
+
+            bitmap.EndInit();
+
+            brush.ImageSource = bitmap;
+
+            button.Background = brush;
+
         }
     }
 }

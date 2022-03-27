@@ -186,6 +186,10 @@ namespace Sudoku
                         Numpads[i, j].Click += Numpad_Click;
                         Numpads[i, j].Content = i * 3 + j + 1;
                         Numpads[i, j].Value = i * 3 + j + 1;
+                        Numpads[i, j].Style = Application.Current.Resources["RoundButtonTemplate"] as Style;
+                        Numpads[i, j].Background = new SolidColorBrush(Colors.Magenta);
+                        Numpads[i, j].MouseEnter += mouseEnterEvent;
+                        Numpads[i, j].MouseLeave += mouseLeaveEvent;
                         Canvas.SetLeft(Numpads[i, j], STEP * currentX + 2);
                         Canvas.SetBottom(Numpads[i, j], STEP * currentY);
                         currentX += WIDTH;
@@ -201,6 +205,10 @@ namespace Sudoku
                 newBtn.Width = 3 * WIDTH;
                 newBtn.Height = HEIGHT;
                 newBtn.Click += Delete_Click;
+                newBtn.Style = Application.Current.Resources["RoundButtonTemplate"] as Style;
+                newBtn.Background = new SolidColorBrush(Colors.Magenta);
+                newBtn.MouseEnter += DelmouseEnterEvent;
+                newBtn.MouseLeave += DelmouseLeaveEvent;
                 Canvas.SetLeft(newBtn, STEP * currentX + 2);
                 Canvas.SetBottom(newBtn, STEP * currentY);
                 MainCanvas.Children.Add(newBtn);
@@ -219,6 +227,8 @@ namespace Sudoku
                 newBtn.Visibility = Visibility.Visible;
             }
         }
+
+        
 
         private bool checking()
         {
@@ -528,6 +538,67 @@ namespace Sudoku
         private void teszt(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Jobbklikk");
+        }
+
+        private void BT_ujjatek_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_ujjatek.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_ujjatek_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_ujjatek.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
+        private void BT_ranglista_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_ranglista.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_ranglista_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_ranglista.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
+        private void BT_beallitasok_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_beallitasok.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_beallitasok_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_beallitasok.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
+        private void BT_Finish_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_Finish.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_Finish_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_Finish.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+        private void mouseLeaveEvent(object sender, MouseEventArgs e)
+        {
+            NumpadCell = sender as SudokuCell;
+            NumpadCell.Background = new SolidColorBrush(Colors.Magenta);
+        }
+
+        private void mouseEnterEvent(object sender, MouseEventArgs e)
+        {
+            NumpadCell = sender as SudokuCell;
+            NumpadCell.Background = new SolidColorBrush(Colors.DarkMagenta);
+        }
+
+        private void DelmouseLeaveEvent(object sender, MouseEventArgs e)
+        {
+            newBtn.Background = new SolidColorBrush(Colors.Magenta);
+        }
+
+        private void DelmouseEnterEvent(object sender, MouseEventArgs e)
+        {
+            newBtn.Background= new SolidColorBrush(Colors.DarkMagenta);
         }
     }
 }

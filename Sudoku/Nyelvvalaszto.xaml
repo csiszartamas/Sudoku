@@ -12,12 +12,36 @@
         <Canvas x:Name="MainCanvas">
 
 
-            <Button x:Name="BT_magyar" Content="Magyar" Width="80" Height="45" Click="BT_magyar_Click"  OpacityMask="Black" Canvas.Left="126" Canvas.Top="182">
+            <Button x:Name="BT_magyar" BorderThickness="0" Content="" Width="390" Height="434" Click="BT_magyar_Click" Canvas.Top="0" Canvas.Left="0" Visibility="Visible" ClickMode="Release">
                 <Button.Background>
-                    <ImageBrush ImageSource="resources/images/hu.png"/>
+                    <ImageBrush ImageSource="/resources/images/hu.png"/>
                 </Button.Background>
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/resources/images/hu.png"/>
+                </Button.OpacityMask>
+                <Button.Foreground>
+                    <ImageBrush ImageSource="/resources/images/hu.png"/>
+                </Button.Foreground>
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.BorderBrush>
+                    <ImageBrush ImageSource="/resources/images/hu.png"/>
+                </Button.BorderBrush>
             </Button>
-            <Button x:Name="BT_angol" Content="Angol" Width="80" Height="45" Click="BT_angol_Click" OpacityMask="Black" Canvas.Left="536" Canvas.Top="185">
+            <Button x:Name="BT_angol" BorderThickness="0" Content=""  Width="390" Height="434" Click="BT_angol_Click" Canvas.Right="0" Canvas.Top="0" MouseEnter="BT_angol_MouseEnter">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="/resources/images/eng.png"/>
+                </Button.OpacityMask>
+                <Button.Foreground>
+                    <ImageBrush ImageSource="/resources/images/eng.png"/>
+                </Button.Foreground>
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.BorderBrush>
+                    <ImageBrush ImageSource="/resources/images/eng.png"/>
+                </Button.BorderBrush>
                 <Button.Background>
                     <ImageBrush ImageSource="resources/images/eng.png"/>
                 </Button.Background>

@@ -13,18 +13,8 @@
 
             <Image x:Name="BorderPicture" Source="/resources/images/Keret.png" Margin="3,0,0,0" Height="398" Width="391"/>
             <Image x:Name="SudokuPicture" Source="/resources/images/sudoku.png" Margin="3,0,0,0" Height="363" Width="360" Canvas.Left="18" Canvas.Top="19"/>
-            <Button x:Name="BT_logmenu" Content="Login"  Margin="500,100,0,0" Width="80" Height="45" Click="BT_logmenu_Click" OpacityMask="Black"/>
-            <Button x:Name="BT_regmenu" Content="Registration"  Margin="500,155,0,0" Width="80" Height="45" Click="BT_regmenu_Click" OpacityMask="Black"/>
-            <Button x:Name="BT_magyar" Content="Magyar" Width="80" Height="45" Click="BT_magyar_Click"  OpacityMask="Black" Canvas.Left="615" Canvas.Top="337">
-                <Button.Background>
-                    <ImageBrush ImageSource="resources/images/hu.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="BT_angol" Content="Angol" Width="80" Height="45" Click="BT_angol_Click" OpacityMask="Black" Canvas.Left="702" Canvas.Top="337">
-                <Button.Background>
-                    <ImageBrush ImageSource="resources/images/eng.png"/>
-                </Button.Background>
-            </Button>
+            <Button x:Name="BT_logmenu" BorderBrush="#fff" Style="{StaticResource RoundButtonTemplate}" Content="Login"  Margin="500,100,0,0" Width="160" Height="45" Click="BT_logmenu_Click" OpacityMask="Black" MouseLeave="BT_logmenu_MouseLeave" MouseEnter="BT_logmenu_MouseEnter"/>
+            <Button x:Name="BT_regmenu" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Registration"  Margin="500,155,0,0" Width="160" Height="45" Click="BT_regmenu_Click" OpacityMask="Black" MouseEnter="BT_regmenu_MouseEnter" MouseLeave="BT_regmenu_MouseLeave"/>
             <TextBlock Height="20" x:Name ="errormessage" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" HorizontalAlignment="Left" Canvas.Left="447" Canvas.Top="265" VerticalAlignment="Top" />
         </Canvas>
 

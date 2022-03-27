@@ -56,19 +56,7 @@ namespace Sudoku
             }
         }
 
-        private void BT_magyar_Click(object sender, RoutedEventArgs e)
-        {
-            //Nyelv = 1;
-            //BT_logmenu.Content = "Bejelentkezés";
-            //BT_regmenu.Content = "Regisztráció";
-        }
-
-        private void BT_angol_Click(object sender, RoutedEventArgs e)
-        {
-            //Nyelv = 2;
-            //BT_logmenu.Content = "Login";
-            //BT_regmenu.Content = "Registration";
-        }
+        
 
         private void MainCanvas_Loaded(object sender, RoutedEventArgs e)
         {
@@ -86,6 +74,28 @@ namespace Sudoku
             {
                 MessageBox.Show("Hiba a MainWindow-ban", "Hibaüzenet");
             }
+        }
+
+        
+
+        private void BT_logmenu_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_logmenu.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
+        private void BT_logmenu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_logmenu.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_regmenu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_regmenu.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_regmenu_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_regmenu.Background = new SolidColorBrush(Colors.DodgerBlue);
         }
     }
 }

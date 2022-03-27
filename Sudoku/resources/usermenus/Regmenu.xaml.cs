@@ -191,6 +191,16 @@ namespace Sudoku
 
         }
 
+        private void BT_registration_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_registration.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_registration_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_registration.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
         //private void BT_magyar_Click(object sender, RoutedEventArgs e)
         //{
         //    Nyelv = 1;
