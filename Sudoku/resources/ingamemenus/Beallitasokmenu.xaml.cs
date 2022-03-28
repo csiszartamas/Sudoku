@@ -25,7 +25,9 @@ namespace Sudoku
         public string ConnectionString { get; set; }
         public string Felhasznalonev { get; set; }
         public string Jatekosnev { get; set; }
-        public Beallitasokmenu(string felhasznalonev, string jatekosnev)
+        public int Id { get; set; }
+        public int Nyelv { get; set; }
+        public Beallitasokmenu(int id,string felhasznalonev, string jatekosnev,int nyelv)
         {
             ConnectionString =
                 @"Server   = (localdb)\MSSQLLocalDB;" +
@@ -33,12 +35,31 @@ namespace Sudoku
             InitializeComponent();
             Felhasznalonev = felhasznalonev;
             Jatekosnev = jatekosnev;
+            Id = id;
+            Nyelv = nyelv;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             TB_felhasznalonev.Text = $"{Felhasznalonev}";
             TB_jatekosnev.Text = $"{Jatekosnev}";
+            if(Nyelv == 1)
+            {
+                TxtBlck_felhasznalonev.Text = "Felhasználó név:";
+                TxtBlck_jatekosnev.Text = "Játékos név:";
+                TxtBlck_jelszo.Text = "Jelenlegi jelszó:";
+                TxtBlck_ujjelszo.Text = "Új jelszó:";
+                TxtBlck_jelszomegerosites.Text = "Jelszó megerősítés";
+            }
+            else if(Nyelv == 2)
+            {
+                TxtBlck_felhasznalonev.Text = "User name:";
+                TxtBlck_jatekosnev.Text = "Player name:";
+                TxtBlck_jelszo.Text = "Current password:";
+                TxtBlck_ujjelszo.Text = "New password:";
+                TxtBlck_jelszomegerosites.Text = "Confirm password";
+            }
+            
         }
 
         private void BT_adatvaltas_Click(object sender, RoutedEventArgs e)
@@ -49,13 +70,27 @@ namespace Sudoku
             if (ujjelszo != ujjelszomegerosites)
             {
                 TxtBlck_jelszo.Focus();
-                errormessage.Text = "Nem egyezik az Új jelszavad és annak megerősítése!";
+                if (Nyelv == 1)
+                {
+                    errormessage.Text = "Nem egyezik az Új jelszavad és megerősítése!";
+                }
+                else if (Nyelv == 2)
+                {
+                    errormessage.Text = "Your new password and confirmation do not match!";
+                }
 
             }
             else if (ujjelszo.Length < 7)
             {
                 PB_jelenlegijelszo.Focus();
-                errormessage.Text = "Legalább 8 karakter legyen az új jelszava!";
+                if (Nyelv == 1)
+                {
+                    errormessage.Text = "Legalább 8 karakter legyen az új jelszava!";
+                }
+                else if (Nyelv == 2)
+                {
+                    errormessage.Text = "Your new password should be at least 8 characters long!";
+                }
             }
             else
             {
@@ -73,7 +108,14 @@ namespace Sudoku
                         {
                             c.Open();
                             new SqlCommand($"UPDATE jatekos SET jelszo = '{PB_ujjelszo.Password}' WHERE felhasznalonev = '{Felhasznalonev}';", c).ExecuteNonQuery();
-                            MessageBox.Show("Sikeresen frissítetted!");
+                            if (Nyelv == 1)
+                            {
+                                MessageBox.Show("Sikeresen frissítetted!");
+                            }
+                            else if (Nyelv == 2)
+                            {
+                                MessageBox.Show("Successfully Update!");
+                            }
                         }
 
                     }
@@ -84,7 +126,14 @@ namespace Sudoku
                 }
                 else
                 {
-                    MessageBox.Show("Hibás jelszó!");
+                    if (Nyelv == 1)
+                    {
+                        MessageBox.Show("Hibás jelszó!");
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        MessageBox.Show("Wrong Password!");
+                    }
                 }
 
             }

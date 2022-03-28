@@ -77,28 +77,62 @@ namespace Sudoku
 
                 if (PB_jelszo.Password.Length == 0)
                 {
-                    errormessage.Text = "Adjon meg jelszavat!";
+                    if (Nyelv == 1)
+                    {
+                        errormessage.Text = "Adjon meg jelszavat!";
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        errormessage.Text = "Enter your password!";
+                    }
                     PB_jelszo.Focus();
                 }
                 else if (PB_jelszo.Password.Length == 0)
                 {
-                    errormessage.Text = "Erősítse meg a jelszavát!";
+                    if (Nyelv == 1)
+                    {
+                        errormessage.Text = "Erősítse meg a jelszavát!";
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        errormessage.Text = "Confirm your password!";
+                    }
                     PB_jelszomegerosites.Focus();
                 }
                 else if (PB_jelszo.Password != PB_jelszo.Password)
                 {
-                    errormessage.Text = "Nem egyeznek a jelszavak! Erősítse meg újra!";
+                    if (Nyelv == 1)
+                    {
+                        errormessage.Text = "Nem egyeznek a jelszavak! Erősítse meg újra!";
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        errormessage.Text = "The passwords do not match! Confirm again!";
+                    }
                     PB_jelszo.Focus();
                 }
                 else if (PB_jelszo.Password.Length < 7)
                 {
-                    errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
+                    if (Nyelv == 1)
+                    {
+                        errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        errormessage.Text = "Your password should be at least 8 characters long!";
+                    }
                     PB_jelszo.Focus();
                 }
                 else if (Nyelv != 1 && Nyelv != 2)
                 {
-                    errormessage.Text = "Válasszon nyelvet, ha még nem választott!";
-                    
+                    if (Nyelv == 1)
+                    {
+                        errormessage.Text = "Válasszon nyelvet, ha még nem választott!";
+                    }
+                    else if (Nyelv == 2)
+                    {
+                        errormessage.Text = "Choose a language if you have not already chosen one!";
+                    }
                 }
                 else
                 {
@@ -110,7 +144,14 @@ namespace Sudoku
                     sda.Fill(datatable);
                     if (int.Parse(datatable.Rows[0][0].ToString()) >= 1)
                     {
-                        MessageBox.Show("Ilyen felhasználónév létezik már!");
+                        if (Nyelv == 1)
+                        {
+                            MessageBox.Show("Ilyen felhasználónév létezik már!");
+                        }
+                        else if (Nyelv == 2)
+                        {
+                            MessageBox.Show("Such a username already exists!");
+                        }
 
                     }
                     else
@@ -121,11 +162,18 @@ namespace Sudoku
                             using (var c = new SqlConnection(ConnectionString))
                             {
                                 c.Open();
-                                new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv,rangid) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "','" + Nyelv + "',null)", c).ExecuteNonQuery();
+                                new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "','" + Nyelv + "')", c).ExecuteNonQuery();
 
                             }
-
-                            MessageBox.Show("Sikeres regisztráció!");
+                            if(Nyelv == 1)
+                            {
+                                MessageBox.Show("Sikeres regisztráció!");
+                            }
+                            else if(Nyelv == 2)
+                            {
+                                MessageBox.Show("Successful registration!");
+                            }
+                            
                             new Logmenu(Nyelv).Show();
                             Close();
                         }
@@ -199,6 +247,30 @@ namespace Sudoku
         private void BT_registration_MouseLeave(object sender, MouseEventArgs e)
         {
             BT_registration.Background = new SolidColorBrush(Colors.DodgerBlue);
+        }
+
+        private void Regisztracios_felulet_Copy_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(Nyelv == 1)
+            {
+                TxtBlck_felhasznalonev.Text = "Felhasználó név:";
+                TxtBlck_jatekosnev.Text = "Játékos név:";
+                TxtBlck_email.Text = "Email cím:";
+                TxtBlck_jelszo.Text = "Jelszó:";
+                TxtBlck_jelszomegerosites.Text = "Jelszó megerősítés:";
+                TB_tips.Text = "Ez a név fog megjelenni az alkalmazásban!";
+                BT_registration.Content = "Regisztráció";
+            }
+            else if(Nyelv == 2)
+            {
+                TxtBlck_felhasznalonev.Text = "User name:";
+                TxtBlck_jatekosnev.Text = "Player name:";
+                TxtBlck_email.Text = "Email address:";
+                TxtBlck_jelszo.Text = "Password:";
+                TxtBlck_jelszomegerosites.Text = "Confirm Password:";
+                TB_tips.Text = "This name will appear in the app!";
+                BT_registration.Content = "Registration";
+            }
         }
 
         //private void BT_magyar_Click(object sender, RoutedEventArgs e)

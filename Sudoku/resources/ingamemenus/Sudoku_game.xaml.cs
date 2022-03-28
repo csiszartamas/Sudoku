@@ -27,41 +27,55 @@ namespace Sudoku
     {
         public string Felhasznalonev { get; set; }
         public string ConnectionString { get; set; }
+        public int Id { get; set; }
+        public int nehezseg { get; set; }
+
         Random rnd = new Random();
         public int showrandomvalueshints = 200;
-
         SudokuCell[,] cells = new SudokuCell[9, 9];
         SudokuCell[,] Numpads = new SudokuCell[3, 3];
+        LabelCell[,] labelCells = new LabelCell[9, 9];
+        LabelCell SelectedCellHint;
         SudokuCell SelectedCell;
         SudokuCell NumpadCell;
         Button newBtn = new Button();
-
+        DispatcherTimer timer = new DispatcherTimer();
         int Nyelv = 0;
-        int Timetick = 0;
+        int minute = 0;
+        int second = 0;
         int hintsCount;
+        int currentX_X = 0;
+        int currentY_Y = 0;
         int currentX = 0;
         int currentY = 0;
         const int STEP = 1;
         const int WIDTH = 40;
         const int HEIGHT = 40;
-
         string Jatekosnev;
-
         bool gamefinished = false;
         bool isButtonsOnScreen = false;
         bool isButtonsGenerated = false;
         bool nemvalasztottszintet = false;
+        bool ujjatekinditas = true;
+        bool jobbklikk = false;
+        string egy = "1";
+        string ketto = "2";
+        string harom = "3";
+        string negy ="4";
+        string ot= "5";
+        string hat= "6";
+        string het= "7";
+        string nyolc= "8";
+        string kilenc= "9";
 
-        public DispatcherTimer _timer;
-        public int time = 15;
-
-        public Sudoku_game(string felhasznalonev)
+        public Sudoku_game(int id,string felhasznalonev)
         {
             ConnectionString =
                 @"Server   = (localdb)\MSSQLLocalDB;" +
                  "Database = szakdolgozat;";
             InitializeComponent();
             Felhasznalonev = felhasznalonev;
+            Id = id;
         }
         //var wrongCells = new List<SudokuCell>();
 
@@ -74,11 +88,13 @@ namespace Sudoku
                     for (int j = 0; j < 9; j++)
                     {
                         cells[i, j] = new SudokuCell();
-                        cells[i, j].Name = "Cell" + i.ToString();
+                        cells[i, j].Name = "Cell" + (i * 9 + j).ToString();
                         cells[i, j].Width = WIDTH;
                         cells[i, j].Height = HEIGHT;
                         cells[i, j].Click += cell_Click;
-                        cells[i, j].MouseRightButtonDown += teszt;
+                        //cells[i, j].MouseRightButtonDown += cell_RightClick;
+                        cells[i, j].IsHitTestVisible = true;
+                        cells[i, j].Focusable = true;
                         cells[i, j].Background = ((i / 3) + (j / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
                         cells[i, j].Foreground = new SolidColorBrush(Colors.DarkMagenta);
                         cells[i, j].Value = 0;
@@ -93,6 +109,33 @@ namespace Sudoku
                     currentY += HEIGHT;
                     isButtonsOnScreen = true;
                 }
+                /*for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        labelCells[i, j] = new LabelCell();
+                        labelCells[i, j].Name = "Cell" + (i * 9 + j).ToString();
+                        labelCells[i, j].Width = WIDTH;
+                        labelCells[i, j].Content = $" {egy}  {ketto}  {harom}\n {negy}  {ot}  {hat}\n {het}  {nyolc}  {kilenc}";
+                        labelCells[i, j].Height = HEIGHT;
+                        //labelCells[i, j].MouseRightButtonDown += cell_RightClick;
+                        labelCells[i, j].IsHitTestVisible = false;
+                        labelCells[i, j].Focusable = false;
+                        labelCells[i, j].Value = 0;
+                        labelCells[i, j].FontSize = 8;
+                        labelCells[i, j].Visibility = Visibility.Visible;
+                        labelCells[i, j].Foreground = new SolidColorBrush(Colors.Blue);
+                        //cells[i, j].BorderBrush = new SolidColorBrush(Colors.Black);
+                        Canvas.SetLeft(labelCells[i, j], 20 + STEP * currentX_X);
+                        Canvas.SetTop(labelCells[i, j], 15 + STEP * currentY_Y);
+                        currentX_X += WIDTH;
+                        MainCanvas.Children.Add(labelCells[i, j]);
+                    }
+                    currentX_X = 0;
+                    currentY_Y += HEIGHT;
+                    isButtonsOnScreen = true;
+
+                }*/
             }
             else
             {
@@ -106,9 +149,20 @@ namespace Sudoku
                         item.Value = 0;
                     }
                 }
+                /*foreach (var item in labelCells)
+                {
+                    MainCanvas.Children.Remove(item);
+                    if (item.IsLocked == false)
+                    {
+                        item.Clear();
+                        item.Value = 0;
+                    }
+                }*/
                 isButtonsOnScreen = false;
                 currentX = 0;
                 currentY = 0;
+                currentX_X = 0;
+                currentY_Y = 0;
 
                 createCells();
             }
@@ -161,6 +215,13 @@ namespace Sudoku
             newBtn.Visibility = Visibility.Hidden;
             SelectedCell.Value = 0;
         }
+        
+
+        private void Delete_Hint_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
 
         private void cell_Click(object sender, EventArgs e)
         {
@@ -188,7 +249,7 @@ namespace Sudoku
                         //Numpads[i, j].Content = i * 3 + j + 1;
                         Numpads[i, j].Value = i * 3 + j + 1;
                         Numpads[i, j].Style = Application.Current.Resources["RoundButtonTemplate"] as Style;
-                        Numpads[i, j].Background = new SolidColorBrush(Colors.Magenta);
+                        Numpads[i, j].Background = new SolidColorBrush(Colors.DodgerBlue);
                         Numpads[i, j].MouseEnter += mouseEnterEvent;
                         Numpads[i, j].MouseLeave += mouseLeaveEvent;
                         Canvas.SetLeft(Numpads[i, j], STEP * currentX + 2);
@@ -200,14 +261,20 @@ namespace Sudoku
                     currentY += HEIGHT;
                     isButtonsOnScreen = true;
                 }
-
-                newBtn.Content = "Delete";
+                if(Nyelv == 1)
+                {
+                    newBtn.Content = "Törlés";
+                }
+                else if(Nyelv == 2)
+                {
+                    newBtn.Content = "Delete";
+                }
                 newBtn.Name = "BT_Delete";
                 newBtn.Width = 3 * WIDTH;
                 newBtn.Height = HEIGHT;
                 newBtn.Click += Delete_Click;
                 newBtn.Style = Application.Current.Resources["RoundButtonTemplate"] as Style;
-                newBtn.Background = new SolidColorBrush(Colors.Magenta);
+                newBtn.Background = new SolidColorBrush(Colors.DodgerBlue);
                 newBtn.MouseEnter += DelmouseEnterEvent;
                 newBtn.MouseLeave += DelmouseLeaveEvent;
                 Canvas.SetLeft(newBtn, STEP * currentX + 2);
@@ -303,6 +370,18 @@ namespace Sudoku
             else
             {
                 showRandomValuesHints(hintsCount);
+                if (RB_Easy.IsChecked == true)
+                {
+                    nehezseg = 0;
+                }
+                if (RB_Medium.IsChecked == true)
+                {
+                    nehezseg = 1;
+                }
+                if (RB_Hard.IsChecked == true)
+                {
+                    nehezseg = 2;
+                }
             }
 
         }
@@ -407,7 +486,7 @@ namespace Sudoku
                 cells[rX, rY].Content = cells[rX, rY].Value.ToString();
                 cells[rX, rY].Foreground = new SolidColorBrush(Colors.Black);
                 cells[rX, rY].IsLocked = true;
-
+                
 
             }
             check_valid_value();
@@ -431,14 +510,45 @@ namespace Sudoku
         {
             createCells();
             startNewGame();
-            SetTimer();
+            DispatcherTimerSample();
         }
 
-        private static void SetTimer()
+        public void DispatcherTimerSample()
+        {
+            
+            timer.Interval = TimeSpan.FromSeconds(1);
+            if (checking())
+            {
+                timer.Stop();
+            }
+            else
+            {
+                if (ujjatekinditas)
+                {
+                    timer.Tick += timer_Tick;
+                    ujjatekinditas = false;
+                }
+                else
+                {
+                    timer.Stop();
+                    second = 0;
+                    minute = 0;
+                }
+                timer.Start();
+            }
+        }
+
+        void timer_Tick(object sender, EventArgs e)
         {
 
+            second++;
+            if(second % 60 == 0)
+            {
+                second = 0;
+                minute++;
+            }
+            lblTime.Content = $"{minute}:{second}";
         }
-
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -454,10 +564,26 @@ namespace Sudoku
                 if (Nyelv == 1)
                 {
                     LB_koszontes.Content = $"Üdvözöllek {Felhasznalonev}!";
+                    BT_ujjatek.Content = "Új Játék";
+                    BT_beallitasok.Content = "Beállítások";
+                    BT_ranglista.Content = "Ranglista";
+                    BT_Finish.Content = "Befejezés";
+                    RB_Easy.Content = "Könnyü";
+                    RB_Medium.Content = "Közepes";
+                    RB_Hard.Content = "Nehéz";
+                    LB_Time.Content = "Idő:";
                 }
                 else if (Nyelv == 2)
                 {
                     LB_koszontes.Content = $"Welcome {Felhasznalonev}!";
+                    BT_ujjatek.Content = "New Game";
+                    BT_beallitasok.Content = "Settings";
+                    BT_ranglista.Content = "Leaderboard";
+                    BT_Finish.Content = "End Game";
+                    RB_Easy.Content = "Easy";
+                    RB_Medium.Content = "Medium";
+                    RB_Hard.Content = "Hard";
+                    LB_Time.Content = "Time:";
                 }
             }
 
@@ -467,7 +593,7 @@ namespace Sudoku
 
         private void BT_ranglista_Click(object sender, RoutedEventArgs e)
         {
-            new Ranglistmenu().Show();
+            new Ranglistmenu(Nyelv).Show();
         }
 
         private void BT_beallitasok_Click(object sender, RoutedEventArgs e)
@@ -478,14 +604,10 @@ namespace Sudoku
 
                 var r = new SqlCommand($"SELECT jatekosnev FROM jatekos WHERE felhasznalonev = '" + Felhasznalonev + "';", c).ExecuteReader();
 
-                while (r.Read())
-                {
-                    Jatekosnev = $"{r[0]}";
-                }
-
-
+                r.Read();
+                Jatekosnev = $"{r[0]}";
             }
-            new Beallitasokmenu(Felhasznalonev, Jatekosnev).Show();
+            new Beallitasokmenu(Id,Felhasznalonev, Jatekosnev,Nyelv).Show();
         }
 
         private void BT_ujjatek_GotFocus(object sender, RoutedEventArgs e)
@@ -495,14 +617,50 @@ namespace Sudoku
 
         private void checkButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (checking())
             {
-                MessageBox.Show("jó");
+                int Befejezettido = minute * 60 + second;
                 gamefinished = true;
+                DispatcherTimerSample();
+                using (var c = new SqlConnection(ConnectionString))
+                {
+                    c.Open();
+                    var r = new SqlCommand($"SELECT ranglista.ido FROM ranglista WHERE jatekosid = '" + Id + "';", c).ExecuteReader();
+                    
+                    r.Read();
+                    int rekord = int.Parse(r[0].ToString());
+                    c.Close();
+                    if (rekord > Befejezettido)
+                    {
+                        if (Nyelv == 1)
+                        {
+                            MessageBox.Show("Rekord idő lett, gratulálok!");
+                        }
+                        else if (Nyelv == 2)
+                        {
+                            MessageBox.Show("Record time, congratulations!");
+                        }
+                        c.Open();
+                        new SqlCommand($"UPDATE ranglista SET ranglista.ido = '{Befejezettido}' WHERE jatekosid = {Id};", c).ExecuteNonQuery();
+                        
+                    }
+                    else
+                    {
+                        if (Nyelv == 1)
+                        {
+                            MessageBox.Show("Sikeresen befejezted, de nem lett rekord idő!");
+                        }
+                        else if (Nyelv == 2)
+                        {
+                            MessageBox.Show("You finished successfully, but no record time!");
+                        }
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Rossz");
+                MessageBox.Show("Rossz a megoldás!");
             }
 
         }
@@ -536,10 +694,7 @@ namespace Sudoku
         {
             MessageBox.Show("Jobbklikk");
         }
-        private void teszt(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Jobbklikk");
-        }
+        
 
         private void BT_ujjatek_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -583,23 +738,23 @@ namespace Sudoku
         private void mouseLeaveEvent(object sender, MouseEventArgs e)
         {
             NumpadCell = sender as SudokuCell;
-            NumpadCell.Background = new SolidColorBrush(Colors.Magenta);
+            NumpadCell.Background = new SolidColorBrush(Colors.DodgerBlue);
         }
 
         private void mouseEnterEvent(object sender, MouseEventArgs e)
         {
             NumpadCell = sender as SudokuCell;
-            NumpadCell.Background = new SolidColorBrush(Colors.DarkMagenta);
+            NumpadCell.Background = new SolidColorBrush(Colors.Blue);
         }
 
         private void DelmouseLeaveEvent(object sender, MouseEventArgs e)
         {
-            newBtn.Background = new SolidColorBrush(Colors.Magenta);
+            newBtn.Background = new SolidColorBrush(Colors.DodgerBlue);
         }
 
         private void DelmouseEnterEvent(object sender, MouseEventArgs e)
         {
-            newBtn.Background= new SolidColorBrush(Colors.DarkMagenta);
+            newBtn.Background= new SolidColorBrush(Colors.Blue);
         }
     }
 }

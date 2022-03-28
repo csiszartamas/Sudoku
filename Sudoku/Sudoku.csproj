@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="resources\ingamemenus\LabelCell.cs" />
     <Compile Include="Nyelvvalaszto.xaml.cs">
       <DependentUpon>Nyelvvalaszto.xaml</DependentUpon>
     </Compile>

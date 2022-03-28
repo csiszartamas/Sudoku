@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Ranglistmenu" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="myDataGrid_Easy" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,50,540,50" Width="250" RowHeaderWidth="0" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False"/>
+        <DataGrid x:Name="myDataGrid_Medium" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="275,50,275,50" Width="250"/>
+        <DataGrid x:Name="myDataGrid_Hard" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="540,50,10,50" Width="250"/>
+
     </Grid>
 </Window>

@@ -13,15 +13,15 @@
 
 
             <Button x:Name="BT_magyar" BorderThickness="0" Content="" Width="390" Height="434" Click="BT_magyar_Click" Canvas.Top="0" Canvas.Left="0" Visibility="Visible" ClickMode="Release">
-                <Button.Background>
-                    <ImageBrush ImageSource="/resources/images/hu.png"/>
-                </Button.Background>
                 <Button.OpacityMask>
-                    <ImageBrush ImageSource="/resources/images/hu.png"/>
+                    <ImageBrush ImageSource="/resources/images/hu.png" Stretch="Fill" Opacity="1"/>
                 </Button.OpacityMask>
                 <Button.Foreground>
                     <ImageBrush ImageSource="/resources/images/hu.png"/>
                 </Button.Foreground>
+                <Button.Background>
+                    <ImageBrush ImageSource="/resources/images/hu.png" Opacity="1"/>
+                </Button.Background>
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

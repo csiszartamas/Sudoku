@@ -28,11 +28,13 @@ namespace Sudoku
         private void BT_magyar_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow(1).Show();
+            Close();
         }
 
         private void BT_angol_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow(2).Show();
+            Close();
         }
 
         private void BT_angol_MouseEnter(object sender, MouseEventArgs e)

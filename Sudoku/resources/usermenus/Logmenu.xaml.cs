@@ -23,6 +23,7 @@ namespace Sudoku
     {
         public int Nyelv { get; set; }
         public string ConnectionString { get; set; }
+        public int Id { get; set; }
         public Logmenu(int nyelv)
         {
             ConnectionString =
@@ -63,6 +64,7 @@ namespace Sudoku
             }
             else
             {
+                
                 string felhasznalonev = TB_felhasznalonev.Text;
                 string jelszo = PB_jelszo.Password;
                 SqlConnection con = new SqlConnection(ConnectionString);
@@ -72,8 +74,15 @@ namespace Sudoku
                 sda.Fill(datatable);
                 if (datatable.Rows[0][0].ToString() == "1")
                 {
+                    using (var c = new SqlConnection(ConnectionString))
+                    {
+                        c.Open();
+                        var r = new SqlCommand($"SELECT id FROM jatekos WHERE felhasznalonev = '" + felhasznalonev + "';", c).ExecuteReader();
+                        r.Read();
+                        Id = Convert.ToInt32(r[0].ToString());
+                    }
                     this.Hide();
-                    new Sudoku_game(felhasznalonev).Show();
+                    new Sudoku_game(Id,felhasznalonev).Show();
                     Close();
                 }
                 else
@@ -112,6 +121,42 @@ namespace Sudoku
                 TxtBlck_felhasznalonev.Text = "Username: ";
                 TxtBlck_jelszo.Text = "Passsword: ";
                 BT_login.Content = "Login";
+                /*< TextBlock Height = "50" HorizontalAlignment = "Left" Margin = "109,212,0,0" Name = "textBlockHeading" VerticalAlignment = "Top" FontSize = "12" FontStyle = "Italic" Padding = "5" Grid.ColumnSpan = "4" >
+                             Megjegyzés: Kérjük, jelentkezzen be itt, hogy megtekinthesse az oldal funkcióit.Ha új vagy ezen az oldalon, akkor < LineBreak />
+                            kérjük, kattintson a
+                           <!--szövegblokk mint hiperlink-->
+                
+                            < TextBlock >
+                
+                                 < Hyperlink Click = "BT_register" FontSize = "14" FontStyle = "Normal" > Regisztráció </ Hyperlink >
+                     
+                                 </ TextBlock >
+                     
+                                 < !--textblokk vége hiperlinkként-->
+                                  gombra
+                              </ TextBlock >*/
+                /*TextBlock textBlock = new TextBlock();
+                //textBlock.Margin = new Thickness(109,212,0,0);
+                textBlock.Name = "textBlockHeading";
+                textBlock.FontSize = 12;
+                textBlock.Visibility = Visibility.Visible;
+                Canvas.SetLeft(textBlock, 109);
+                Canvas.SetTop(textBlock, 212);
+
+                Hyperlink hyp = new Hyperlink();
+                hyp.Click += BT_register;
+                hyp.FontSize = 14;
+                hyp.Name = "Regisztráció";
+                textBlock.Text = $"Megjegyzés: Kérjük jelentkezzen be itt, hogy megtekinthesse az oldal funkcióit. Ha új vagy ezen az oldalon akkor \n kérjük kattinson a -ra";
+
+                var inlineHello = new Span();
+                inlineHello.Inlines.Add("Hello");
+                var inlineJSighn = new Span();
+                inlineJSighn.Inlines.Add("JSighn");
+                textBlock.Inlines.Add(inlineHello);
+                textBlock.Inlines.Add(inlineJSighn);*/
+
+
             }
         }
 
