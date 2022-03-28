@@ -627,7 +627,7 @@ namespace Sudoku
                 {
                     c.Open();
                     var r = new SqlCommand($"SELECT ranglista.ido FROM ranglista WHERE jatekosid = '" + Id + "';", c).ExecuteReader();
-                    
+                    //HA NINCS ÉRTÉK HIBA VAN (ÚJNÁL)
                     r.Read();
                     int rekord = int.Parse(r[0].ToString());
                     c.Close();
