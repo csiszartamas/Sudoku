@@ -8,17 +8,19 @@
         Title="Sudoku_game" Height="440" Width="800" ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
         <Canvas x:Name="MainCanvas">
-            <Button x:Name="BT_ujjatek" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ujjatek_Click" GotFocus="BT_ujjatek_GotFocus" Canvas.Left="545" Canvas.Top="147" MouseRightButtonDown="BT_ujjatek_MouseRightButtonDown" MouseEnter="BT_ujjatek_MouseEnter" MouseLeave="BT_ujjatek_MouseLeave"/>
-            <Button x:Name="BT_ranglista" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ranglista_Click" Canvas.Left="673" Canvas.Top="199" MouseEnter="BT_ranglista_MouseEnter" MouseLeave="BT_ranglista_MouseLeave"/>
-            <Button x:Name="BT_beallitasok" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_beallitasok_Click" Canvas.Left="671" Canvas.Top="281" MouseEnter="BT_beallitasok_MouseEnter" MouseLeave="BT_beallitasok_MouseLeave"/>
-            <Label x:Name="LB_Time" Content="Idő:"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Canvas.Left="625" Canvas.Top="369"/>
+            <Button x:Name="BT_ujjatek" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ujjatek_Click" GotFocus="BT_ujjatek_GotFocus" Canvas.Left="537" Canvas.Top="164" MouseRightButtonDown="BT_ujjatek_MouseRightButtonDown" MouseEnter="BT_ujjatek_MouseEnter" MouseLeave="BT_ujjatek_MouseLeave"/>
+            <Button x:Name="BT_ranglista" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ranglista_Click" Canvas.Left="680" Canvas.Top="186" MouseEnter="BT_ranglista_MouseEnter" MouseLeave="BT_ranglista_MouseLeave"/>
+            <Button x:Name="BT_beallitasok" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_beallitasok_Click" Canvas.Left="680" Canvas.Top="258" MouseEnter="BT_beallitasok_MouseEnter" MouseLeave="BT_beallitasok_MouseLeave"/>
+            <Label x:Name="LB_Time" Content="Idő:"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Canvas.Left="570" Canvas.Top="336"/>
             <Label x:Name="LB_koszontes" Content="Label" Height="53" Width="140" Canvas.Left="459" Canvas.Top="24"/>
-            <Button x:Name="BT_Finish" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Befejezés" Canvas.Left="550" Canvas.Top="280" Height="47" Width="106" Click="checkButton_Click" MouseEnter="BT_Finish_MouseEnter" MouseLeave="BT_Finish_MouseLeave"/>
-            <Label Name="lblTime" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="657" Canvas.Top="369" Height="45" Width="126"/>
+            
+            <Label Name="lblTime" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="604" Canvas.Top="336" Height="45" Width="126"/>
             <Image x:Name="BorderPicture" Source="/resources/images/Keret.png" Margin="3,0,0,0" Height="398" Width="391"/>
-            <RadioButton x:Name="RB_Hard" Content="Hard" Height="52" Canvas.Left="543" Canvas.Top="201" Width="174" Checked="CB_Checker_Check"/>
-            <RadioButton x:Name="RB_Medium"  Content="Medium" Height="70" Canvas.Left="543" Canvas.Top="216" Width="122" Checked="CB_Checker_Check"/>
-            <RadioButton x:Name="RB_Easy" Content="Easy" Height="54" Canvas.Left="543" Canvas.Top="231" Width="92" Checked="CB_Checker_Check"/>
+            <Image x:Name="Picture" Source="/resources/images/sudoku.png" Height="150" Width="150" Canvas.Right="5" Canvas.Top="5"/>
+            <RadioButton x:Name="RB_Hard" Content="Hard" Height="52" Canvas.Left="546" Canvas.Top="208" Width="174" Checked="CB_Checker_Check" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <RadioButton x:Name="RB_Medium"  Content="Medium" Height="70" Canvas.Left="546" Canvas.Top="223" Width="122" Checked="CB_Checker_Check" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <RadioButton x:Name="RB_Easy" Content="Easy" Height="54" Canvas.Left="546" Canvas.Top="238" Width="92" Checked="CB_Checker_Check" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="BT_Finish" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Befejezés" Canvas.Left="540" Canvas.Top="258" Height="44" Width="110" Click="checkButton_Click" MouseEnter="BT_Finish_MouseEnter" MouseLeave="BT_Finish_MouseLeave"/>
         </Canvas>
 
 

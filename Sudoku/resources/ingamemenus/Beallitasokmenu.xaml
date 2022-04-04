@@ -20,16 +20,36 @@
         <PasswordBox x:Name="PB_ujjelszomegerosites" Height="22" Width="222" HorizontalAlignment="Left" Margin="280,240,0,0"  VerticalAlignment="Top"/>
 
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="253,272,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-        <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" Height="44" Width="110"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_adatvaltas_Click"/>
-        <Button x:Name="BT_magyar" Content="Magyar" Click="BT_magyar_Click"  OpacityMask="Black" Margin="411,304,301,70">
+        <Button x:Name="BT_adatvaltas" Content="Adatmodositás" HorizontalAlignment="Left" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Width="116" Height="50"  Margin="164,306,0,0" VerticalAlignment="Top" Click="BT_adatvaltas_Click" MouseEnter="BT_adatvaltas_MouseEnter" MouseLeave="BT_adatvaltas_MouseLeave"/>
+        <Button x:Name="BT_magyar" Content="" Click="BT_magyar_Click" Margin="640,232,72,142">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/resources/images/hu.png"/>
+            </Button.OpacityMask>
+            <Button.Foreground>
+                <ImageBrush ImageSource="/resources/images/hu.png"/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="/resources/images/hu.png"/>
+            </Button.BorderBrush>
             <Button.Background>
                 <ImageBrush ImageSource="/Sudoku;component/resources/images/hu.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BT_angol" Content="Angol" Click="BT_angol_Click" OpacityMask="Black" Margin="498,304,214,70">
+        <Button x:Name="BT_angol" Content="" Click="BT_angol_Click" Margin="640,304,72,70">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/resources/images/eng.png"/>
+            </Button.OpacityMask>
+            <Button.Foreground>
+                <ImageBrush ImageSource="/resources/images/eng.png"/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="/resources/images/eng.png"/>
+            </Button.BorderBrush>
             <Button.Background>
                 <ImageBrush ImageSource="/Sudoku;component/resources/images/eng.png"/>
             </Button.Background>
         </Button>
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="629,195,0,0" x:Name="TxtBlck_nyelvvalasztas" Text="Felhasználónév:" VerticalAlignment="Top" Width="110" />
+
     </Grid>
 </Window>

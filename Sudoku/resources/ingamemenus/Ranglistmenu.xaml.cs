@@ -59,12 +59,18 @@ namespace Sudoku
                 col1.Header = "Helyezés";
                 col2.Header = "Játékos Név";
                 col3.Header = "Idő";
+                TB_Easy.Content = "Könnyü Szint";
+                TB_Medium.Content = "Közepes szint";
+                TB_Hard.Content = "Nehéz szint";
             }
             else if(Nyelv == 2)
             {
                 col1.Header = "Ranking";
                 col2.Header = "Player Name";
                 col3.Header = "Time";
+                TB_Easy.Content = "Easy level";
+                TB_Medium.Content = "Medium level";
+                TB_Hard.Content = "Hard level";
             }
             using (var c = new SqlConnection(ConnectionString))
             {  

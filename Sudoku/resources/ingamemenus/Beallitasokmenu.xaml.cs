@@ -50,6 +50,8 @@ namespace Sudoku
                 TxtBlck_jelszo.Text = "Jelenlegi jelszó:";
                 TxtBlck_ujjelszo.Text = "Új jelszó:";
                 TxtBlck_jelszomegerosites.Text = "Jelszó megerősítés";
+                TxtBlck_nyelvvalasztas.Text = "Nyelv választás";
+                BT_adatvaltas.Content = "Adatváltoztatás";
             }
             else if(Nyelv == 2)
             {
@@ -58,6 +60,8 @@ namespace Sudoku
                 TxtBlck_jelszo.Text = "Current password:";
                 TxtBlck_ujjelszo.Text = "New password:";
                 TxtBlck_jelszomegerosites.Text = "Confirm password";
+                TxtBlck_nyelvvalasztas.Text = "Language choose";
+                BT_adatvaltas.Content = "Data Change";
             }
             
         }
@@ -174,6 +178,16 @@ namespace Sudoku
             {
                 MessageBox.Show("DB ERROR!");
             }
+        }
+
+        private void BT_adatvaltas_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BT_adatvaltas.Background = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void BT_adatvaltas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BT_adatvaltas.Background = new SolidColorBrush(Colors.DodgerBlue);
         }
     }
 }

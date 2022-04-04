@@ -140,9 +140,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="resources\images\bg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="resources\images\Keret.png" />
     <Resource Include="resources\images\sudoku.png" />
     <Resource Include="resources\images\eng.png" />

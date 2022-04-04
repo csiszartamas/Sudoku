@@ -10,6 +10,10 @@
         <DataGrid x:Name="myDataGrid_Easy" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,50,540,50" Width="250" RowHeaderWidth="0" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False"/>
         <DataGrid x:Name="myDataGrid_Medium" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="275,50,275,50" Width="250"/>
         <DataGrid x:Name="myDataGrid_Hard" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="540,50,10,50" Width="250"/>
-
+        <Canvas Height="Auto" Margin="80,0,85,384" Width="Auto">
+            <Button x:Name="TB_Hard" Content="Button" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Width="100" Height="50" Canvas.Left="536"/>
+            <Button x:Name="TB_Medium" Content="Button" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Width="100" Height="50" Canvas.Left="270"/>
+            <Button x:Name="TB_Easy" Content="Button" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Width="100" Height="50"/>
+        </Canvas>
     </Grid>
 </Window>
