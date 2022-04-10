@@ -82,7 +82,9 @@ namespace Sudoku
                         cells[i, j].Click += cell_Click;
                         cells[i, j].IsHitTestVisible = true;
                         cells[i, j].Focusable = true;
-                        cells[i, j].Background = ((i / 3) + (j / 3)) % 2 == 0 ? new SolidColorBrush(Colors.LightGray) : new SolidColorBrush(Colors.White);
+                        cells[i, j].Background = ((i / 3) + (j / 3)) % 2 == 0 
+                            ? new SolidColorBrush(Colors.LightGray) 
+                            : new SolidColorBrush(Colors.White);
                         cells[i, j].Foreground = new SolidColorBrush(Colors.DarkMagenta);
                         cells[i, j].Value = 0;
                         cells[i, j].FontSize = 14;
@@ -408,6 +410,7 @@ namespace Sudoku
 
             // Tesztelésből feltölteni az egészet.
             //cells[i, j].Content = value.ToString();
+            //cells[i, j].Foreground = new SolidColorBrush(Colors.DarkMagenta);
 
             return true;
         }

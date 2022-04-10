@@ -76,11 +76,11 @@ namespace Sudoku
             {  
                 c.Open();
                 var r = new SqlCommand("SELECT jatekos.jatekosnev,ranglista.ido FROM ranglista INNER JOIN jatekos ON ranglista.jatekosid = jatekos.id WHERE ranglista.nehezseg = 0 ORDER BY ranglista.ido ASC;", c).ExecuteReader();
-                int a = 1;
+                int helyezes = 1;
                 while (r.Read())
                 {
-                    myDataGrid_Easy.Items.Add(new MyData { id = a, nev = r[0].ToString(), ido = int.Parse(r[1].ToString())});
-                    a++;
+                    myDataGrid_Easy.Items.Add(new MyData { id = helyezes, nev = r[0].ToString(), ido = int.Parse(r[1].ToString())});
+                    helyezes++;
                 }
             }
         }
@@ -112,11 +112,11 @@ namespace Sudoku
             {
                 c.Open();
                 var r = new SqlCommand("SELECT jatekos.jatekosnev,ranglista.ido FROM ranglista INNER JOIN jatekos ON ranglista.jatekosid = jatekos.id WHERE ranglista.nehezseg = 1 ORDER BY ranglista.ido ASC;", c).ExecuteReader();
-                int a = 1;
+                int helyezes = 1;
                 while (r.Read())
                 {
-                    myDataGrid_Medium.Items.Add(new MyData { id = a, nev = r[0].ToString(), ido = int.Parse(r[1].ToString()) });
-                    a++;
+                    myDataGrid_Medium.Items.Add(new MyData { id = helyezes, nev = r[0].ToString(), ido = int.Parse(r[1].ToString()) });
+                    helyezes++;
                 }
             }
         }
@@ -148,11 +148,11 @@ namespace Sudoku
             {
                 c.Open();
                 var r = new SqlCommand("SELECT jatekos.jatekosnev,ranglista.ido FROM ranglista INNER JOIN jatekos ON ranglista.jatekosid = jatekos.id WHERE ranglista.nehezseg = 2 ORDER BY ranglista.ido ASC;", c).ExecuteReader();
-                int a = 1;
+                int helyezes = 1;
                 while (r.Read())
                 {
-                    myDataGrid_Hard.Items.Add(new MyData { id = a, nev = r[0].ToString(), ido = int.Parse(r[1].ToString()) });
-                    a++;
+                    myDataGrid_Hard.Items.Add(new MyData { id = helyezes, nev = r[0].ToString(), ido = int.Parse(r[1].ToString()) });
+                    helyezes++;
                 }
             }
         }

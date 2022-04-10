@@ -162,7 +162,13 @@ namespace Sudoku
                             using (var c = new SqlConnection(ConnectionString))
                             {
                                 c.Open();
-                                new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv) values('" + felhasznalonev + "','" + jelszo + "','" + email + "','" + jatekosnev + "','" + Nyelv + "')", c).ExecuteNonQuery();
+                                new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv) values" 
+                                    +$"('" 
+                                    + felhasznalonev + "','" 
+                                    + jelszo + "','" 
+                                    + email + "','" 
+                                    + jatekosnev + "','" 
+                                    + Nyelv + "')", c).ExecuteNonQuery();
 
                             }
                             if(Nyelv == 1)

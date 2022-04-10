@@ -47,19 +47,9 @@ namespace Sudoku
                 errormessage.Text = "Adj meg egy felhasználónevet!";
                 TB_felhasznalonev.Focus();
             }
-            else if (TB_felhasznalonev.Text.Length <= 3)
-            {
-                errormessage.Text = "Érvénytelen felhasználónév! (Minimum 4 karakter!)";
-                TB_felhasznalonev.Focus();
-            }
             else if (PB_jelszo.Password.Length == 0)
             {
                 errormessage.Text = "Adjon meg jelszavat!";
-                PB_jelszo.Focus();
-            }
-            else if (PB_jelszo.Password.Length <= 7)
-            {
-                errormessage.Text = "Legalább 8 karakter legyen a jelszava!";
                 PB_jelszo.Focus();
             }
             else
@@ -87,7 +77,15 @@ namespace Sudoku
                 }
                 else
                 {
-                    MessageBox.Show("Hibás felhasználónév vagy jelszó!");
+                    if(Nyelv == 1)
+                    {
+                        MessageBox.Show("Hibás felhasználónév vagy jelszó!");
+                    }
+                    else if(Nyelv == 2)
+                    {
+                        MessageBox.Show("Incorrect username or password!");
+                    }
+                    
                 }
             }
         }
@@ -121,42 +119,6 @@ namespace Sudoku
                 TxtBlck_felhasznalonev.Text = "Username: ";
                 TxtBlck_jelszo.Text = "Passsword: ";
                 BT_login.Content = "Login";
-                /*< TextBlock Height = "50" HorizontalAlignment = "Left" Margin = "109,212,0,0" Name = "textBlockHeading" VerticalAlignment = "Top" FontSize = "12" FontStyle = "Italic" Padding = "5" Grid.ColumnSpan = "4" >
-                             Megjegyzés: Kérjük, jelentkezzen be itt, hogy megtekinthesse az oldal funkcióit.Ha új vagy ezen az oldalon, akkor < LineBreak />
-                            kérjük, kattintson a
-                           <!--szövegblokk mint hiperlink-->
-                
-                            < TextBlock >
-                
-                                 < Hyperlink Click = "BT_register" FontSize = "14" FontStyle = "Normal" > Regisztráció </ Hyperlink >
-                     
-                                 </ TextBlock >
-                     
-                                 < !--textblokk vége hiperlinkként-->
-                                  gombra
-                              </ TextBlock >*/
-                /*TextBlock textBlock = new TextBlock();
-                //textBlock.Margin = new Thickness(109,212,0,0);
-                textBlock.Name = "textBlockHeading";
-                textBlock.FontSize = 12;
-                textBlock.Visibility = Visibility.Visible;
-                Canvas.SetLeft(textBlock, 109);
-                Canvas.SetTop(textBlock, 212);
-
-                Hyperlink hyp = new Hyperlink();
-                hyp.Click += BT_register;
-                hyp.FontSize = 14;
-                hyp.Name = "Regisztráció";
-                textBlock.Text = $"Megjegyzés: Kérjük jelentkezzen be itt, hogy megtekinthesse az oldal funkcióit. Ha új vagy ezen az oldalon akkor \n kérjük kattinson a -ra";
-
-                var inlineHello = new Span();
-                inlineHello.Inlines.Add("Hello");
-                var inlineJSighn = new Span();
-                inlineJSighn.Inlines.Add("JSighn");
-                textBlock.Inlines.Add(inlineHello);
-                textBlock.Inlines.Add(inlineJSighn);*/
-
-
             }
         }
 
