@@ -157,7 +157,19 @@ namespace Sudoku
             }
         }
 
+        private void myDataGrid_Easy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
 
+        private void myDataGrid_Medium_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
+
+        private void myDataGrid_Hard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -9,11 +9,11 @@
     <Grid Loaded="Grid_Loaded">
         <Canvas x:Name="MainCanvas">
             <Button x:Name="BT_ujjatek" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Új Játék" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ujjatek_Click" GotFocus="BT_ujjatek_GotFocus" Canvas.Left="537" Canvas.Top="164" MouseRightButtonDown="BT_ujjatek_MouseRightButtonDown" MouseEnter="BT_ujjatek_MouseEnter" MouseLeave="BT_ujjatek_MouseLeave"/>
-            <Button x:Name="BT_ranglista" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_ranglista_Click" Canvas.Left="680" Canvas.Top="186" MouseEnter="BT_ranglista_MouseEnter" MouseLeave="BT_ranglista_MouseLeave"/>
-            <Button x:Name="BT_beallitasok" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Top" Click="BT_beallitasok_Click" Canvas.Left="680" Canvas.Top="258" MouseEnter="BT_beallitasok_MouseEnter" MouseLeave="BT_beallitasok_MouseLeave"/>
+            <Button x:Name="BT_ranglista" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Ranglista" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Center" Click="BT_ranglista_Click" Canvas.Left="667" Canvas.Top="186" MouseEnter="BT_ranglista_MouseEnter" MouseLeave="BT_ranglista_MouseLeave"/>
+            <Button x:Name="BT_beallitasok" BorderBrush="#fff"  Style="{StaticResource RoundButtonTemplate}" Content="Beállítások" HorizontalAlignment="Left" Height="44" Width="110" VerticalAlignment="Center" Click="BT_beallitasok_Click" Canvas.Left="668" Canvas.Top="258" MouseEnter="BT_beallitasok_MouseEnter" MouseLeave="BT_beallitasok_MouseLeave"/>
             <Label x:Name="LB_Time" Content="Idő:"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Canvas.Left="570" Canvas.Top="336"/>
             <Label x:Name="LB_koszontes" Content="Label" Height="53" Width="140" Canvas.Left="459" Canvas.Top="24"/>
-            
+
             <Label Name="lblTime" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="604" Canvas.Top="336" Height="45" Width="126"/>
             <Image x:Name="BorderPicture" Source="/resources/images/Keret.png" Margin="3,0,0,0" Height="398" Width="391"/>
             <Image x:Name="Picture" Source="/resources/images/sudoku.png" Height="150" Width="150" Canvas.Right="5" Canvas.Top="5"/>

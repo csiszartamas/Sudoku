@@ -59,7 +59,7 @@ namespace Sudoku
                 string jelszo = PB_jelszo.Password;
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + felhasznalonev + "' and jelszo = '" + jelszo + "'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + felhasznalonev + "' and jelszo = '" + Hash.HashPassword(jelszo) + "'", con);
                 DataTable datatable = new DataTable();
                 sda.Fill(datatable);
                 if (datatable.Rows[0][0].ToString() == "1")

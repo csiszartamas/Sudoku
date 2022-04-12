@@ -165,7 +165,7 @@ namespace Sudoku
                                 new SqlCommand($"Insert INTO jatekos (felhasznalonev,jelszo,email,jatekosnev,nyelv) values" 
                                     +$"('" 
                                     + felhasznalonev + "','" 
-                                    + jelszo + "','" 
+                                    + Hash.HashPassword(jelszo) + "','" 
                                     + email + "','" 
                                     + jatekosnev + "','" 
                                     + Nyelv + "')", c).ExecuteNonQuery();

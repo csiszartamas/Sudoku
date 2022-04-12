@@ -1,5 +1,6 @@
 -- create
 create database szakdolgozat;
+-- use
 use szakdolgozat;
 
 CREATE TABLE jatekos (

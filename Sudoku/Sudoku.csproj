@@ -55,35 +55,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="resources\ingamemenus\LabelCell.cs" />
-    <Compile Include="Nyelvvalaszto.xaml.cs">
+    <Compile Include="resources\usermenus\Hash.cs" />
+    <Compile Include="resources\usermenus\LabelCell.cs" />
+    <Compile Include="resources\usermenus\Nyelvvalaszto.xaml.cs">
       <DependentUpon>Nyelvvalaszto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="resources\ingamemenus\Beallitasokmenu.xaml.cs">
+    <Compile Include="resources\usermenus\Beallitasokmenu.xaml.cs">
       <DependentUpon>Beallitasokmenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="resources\ingamemenus\Ranglistmenu.xaml.cs">
+    <Compile Include="resources\usermenus\Ranglistmenu.xaml.cs">
       <DependentUpon>Ranglistmenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="resources\ingamemenus\SudokuCell.cs" />
+    <Compile Include="resources\usermenus\SudokuCell.cs" />
     <Compile Include="resources\usermenus\Logmenu.xaml.cs">
       <DependentUpon>Logmenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="resources\usermenus\Regmenu.xaml.cs">
       <DependentUpon>Regmenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="resources\ingamemenus\Sudoku_game.xaml.cs">
+    <Compile Include="resources\usermenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
     </Compile>
-    <Page Include="Nyelvvalaszto.xaml">
+    <Page Include="resources\usermenus\Nyelvvalaszto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="resources\ingamemenus\Beallitasokmenu.xaml">
+    <Page Include="resources\usermenus\Beallitasokmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="resources\ingamemenus\Ranglistmenu.xaml">
+    <Page Include="resources\usermenus\Ranglistmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,7 +92,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="resources\usermenus\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,7 +100,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="resources\usermenus\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -107,7 +108,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="resources\ingamemenus\Sudoku_game.xaml">
+    <Page Include="resources\usermenus\Sudoku_game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +145,7 @@
     <Resource Include="resources\images\sudoku.png" />
     <Resource Include="resources\images\eng.png" />
     <Resource Include="resources\images\hu.png" />
-    <Content Include="resources\SQL_LETREHOZO.sql" />
+    <Content Include="resources\DatabaseFolder\SQL_LETREHOZO.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
