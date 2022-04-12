@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="resources\usermenus\Hash.cs" />
     <Compile Include="resources\usermenus\LabelCell.cs" />
-    <Compile Include="resources\usermenus\Nyelvvalaszto.xaml.cs">
+    <Compile Include="Nyelvvalaszto.xaml.cs">
       <DependentUpon>Nyelvvalaszto.xaml</DependentUpon>
     </Compile>
     <Compile Include="resources\usermenus\Beallitasokmenu.xaml.cs">
@@ -76,7 +76,7 @@
     <Compile Include="resources\usermenus\Sudoku_game.xaml.cs">
       <DependentUpon>Sudoku_game.xaml</DependentUpon>
     </Compile>
-    <Page Include="resources\usermenus\Nyelvvalaszto.xaml">
+    <Page Include="Nyelvvalaszto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
