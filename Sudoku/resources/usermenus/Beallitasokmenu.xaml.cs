@@ -101,7 +101,7 @@ namespace Sudoku
 
                 SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + Felhasznalonev + "' and jelszo = '" + jelenlegijelszo + "'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from jatekos where felhasznalonev = '" + Felhasznalonev + "' and jelszo = '" + Hash.HashPassword(jelenlegijelszo) + "'", con);
                 DataTable datatable = new DataTable();
                 sda.Fill(datatable);
                 if (datatable.Rows[0][0].ToString() == "1")
@@ -111,7 +111,7 @@ namespace Sudoku
                         using (var c = new SqlConnection(ConnectionString))
                         {
                             c.Open();
-                            new SqlCommand($"UPDATE jatekos SET jelszo = '{PB_ujjelszo.Password}' WHERE felhasznalonev = '{Felhasznalonev}';", c).ExecuteNonQuery();
+                            new SqlCommand($"UPDATE jatekos SET jelszo = '{Hash.HashPassword(PB_ujjelszo.Password)}' WHERE felhasznalonev = '{Felhasznalonev}';", c).ExecuteNonQuery();
                             if (Nyelv == 1)
                             {
                                 MessageBox.Show("Sikeresen frissítetted!");
